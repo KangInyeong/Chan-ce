@@ -40,11 +40,24 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="160dp"
-        android:layout_gravity="center"
-        android:src="@drawable/temp_banner" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager_Adbanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal" />
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"/>
+
+    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"

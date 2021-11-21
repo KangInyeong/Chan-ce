@@ -29,15 +29,13 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".MypageActivity"
-            android:exported="true" />
 
         <activity android:name=".SearchActivity" android:label="검색 페이지"/>
         <activity android:name=".StoreDetailActivity" android:label="스토어 상세 페이지"/>
         <activity android:name=".SubscriptionActivity" android:label="구독 설정 페이지"/>
         <activity android:name=".ReceiptActivity" android:label="결제 페이지"/>
         <activity android:name=".AccountActivity" android:label="입금 페이지"/>
+        <activity android:name=".MypageActivity" android:label="마이 페이지"/>
 
     </application>
 
