@@ -21,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.EditText
-import com.kang.chan_ce.databinding.ActivityMainBinding
 import com.kang.chan_ce.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
@@ -69,9 +68,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun identicalPassword(): Boolean {
         var identical = false
-        if (notEmpty() &&
-            binding.editPw.text.toString().trim() == binding.editPw2.text.toString().trim()
-        ) {
+        if (notEmpty() && binding.editPw.text.toString().trim() == binding.editPw2.text.toString().trim()) {
             identical = true
         } else if (!notEmpty()) {
             createAccountInputsArray.forEach { input ->
@@ -87,7 +84,7 @@ class SignupActivity : AppCompatActivity() {
 
     private fun signIn() {
         if (identicalPassword()) {
-            // identicalPassword() returns true only  when inputs are not empty and passwords are identical
+
             userEmail = binding.editEmail.text.toString().trim()
             userPassword = binding.editPw.text.toString().trim()
 
@@ -117,5 +114,6 @@ class SignupActivity : AppCompatActivity() {
             }
         }
     }
+
 }
 

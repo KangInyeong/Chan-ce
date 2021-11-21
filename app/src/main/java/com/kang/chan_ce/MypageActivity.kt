@@ -17,7 +17,6 @@ class MypageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val binding = ActivityMypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -51,7 +50,7 @@ class MypageActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             Toast.makeText(this,"signed out", Toast.LENGTH_SHORT).show()
             finish()
-
         }
+
     }
 }
