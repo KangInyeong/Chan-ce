@@ -1,7 +1,10 @@
 package com.kang.chan_ce
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kang.chan_ce.databinding.ActivityMypageBinding
+import com.kang.chan_ce.databinding.ActivitySearchBinding
 import android.widget.Button
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,6 +21,15 @@ class MypageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val binding = ActivityMypageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnMainPage.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         setContentView(R.layout.activity_mypage)
 
         // 구글 로그아웃을 위해 로그인 세션 가져오기
@@ -41,7 +53,6 @@ class MypageActivity : AppCompatActivity() {
             logoutIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(logoutIntent)
         }
-
 
     }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="date">
+        <item> "Nov 22nd ~ Nov 28th" </item>
+        <item> "Nov 29th ~ Dec 5th" </item>
+        <item> "Dec 6th ~ Dec 12nd" </item>
+    </string-array>
+</resources>
