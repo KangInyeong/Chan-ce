@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.kang.chan_ce.databinding.ActivityMainBinding
+import com.kang.chan_ce.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
@@ -29,17 +29,32 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_login)
+        val binding = ActivityLoginBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance() // firebase의 authentication
 
-        // Google Login button
-        val btn_google = findViewById<Button>(R.id.btn_google);
+        binding.btnGoogle.setOnClickListener {
+//            googleLogin()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
 
-        btn_google.setOnClickListener { googleLogin() }
+        }
+
+        binding.btnLogin.setOnClickListener {
+//            signIn(binding.editEmail.toString(), binding.editPw.toString())
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSignup.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+        }
 
         // Configure Google Sign In
-        var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
@@ -94,9 +109,9 @@ class LoginActivity : AppCompatActivity() {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if(requestCode == GOOGLE_LOGIN_CODE){
-            var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)!!
+            var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
 
-            if(result.isSuccess) {
+            if(result!!.isSuccess) {
                 var accout = result.signInAccount
                 firebaseAuthWithGoogle(accout)
                 Toast.makeText(this,"Login Succes",Toast.LENGTH_SHORT).show()
@@ -110,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
     // Call MainActivity & pass user info
     fun moveMainPage(user: FirebaseUser?){
         if( user!= null){
-            startActivity(Intent(this,MypageActivity::class.java))
+            startActivity(Intent(this,MainActivity::class.java))
             finish()
         }
     }

@@ -21,14 +21,101 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.EditText
+import com.kang.chan_ce.databinding.ActivityMainBinding
+import com.kang.chan_ce.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
 
+    lateinit var userEmail: String
+    lateinit var userPassword: String
+    lateinit var createAccountInputsArray: Array<EditText>
+
+    private lateinit var binding: ActivitySignupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_signup)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+        createAccountInputsArray = arrayOf(binding.editEmail, binding.editPw, binding.editPw2)
+
+        //가입
+        binding.btnSignup.setOnClickListener {
+            signIn()
+        }
+
+        //로그인으로 돌아가기
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            Toast.makeText(this, "please sign into your account", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "welcome back", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun notEmpty(): Boolean = binding.editEmail.toString().trim().isNotEmpty() &&
+            binding.editPw.text.toString().trim().isNotEmpty() &&
+            binding.editPw2.text.toString().trim().isNotEmpty()
+
+    private fun identicalPassword(): Boolean {
+        var identical = false
+        if (notEmpty() &&
+            binding.editPw.text.toString().trim() == binding.editPw2.text.toString().trim()
+        ) {
+            identical = true
+        } else if (!notEmpty()) {
+            createAccountInputsArray.forEach { input ->
+                if (input.text.toString().trim().isEmpty()) {
+                    input.error = "${input.hint} is required"
+                }
+            }
+        } else {
+            Toast.makeText(this, "password not matching", Toast.LENGTH_SHORT).show()
+        }
+        return identical
+    }
+
+    private fun signIn() {
+        if (identicalPassword()) {
+            // identicalPassword() returns true only  when inputs are not empty and passwords are identical
+            userEmail = binding.editEmail.text.toString().trim()
+            userPassword = binding.editPw.text.toString().trim()
+
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPassword)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "account sucessfully created", Toast.LENGTH_SHORT)
+                            .show()
+                        sendEmailVerification()
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this, "fail to authentic", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }
 
 
+    private fun sendEmailVerification() {
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            it.sendEmailVerification().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "email sent to $userEmail", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 }
+

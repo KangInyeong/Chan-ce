@@ -6,11 +6,18 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chance">
+        <activity
+            android:name=".ScanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".QrActivity"
+            android:exported="true" />
         <activity
             android:name=".MoreActivity"
             android:exported="true" />
@@ -19,26 +26,37 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".MypageActivity"
             android:exported="true" />
-
-        <activity android:name=".SearchActivity" android:label="검색 페이지"/>
-        <activity android:name=".StoreDetailActivity" android:label="스토어 상세 페이지"/>
-        <activity android:name=".SubscriptionActivity" android:label="구독 설정 페이지"/>
-        <activity android:name=".ReceiptActivity" android:label="결제 페이지"/>
-        <activity android:name=".AccountActivity" android:label="입금 페이지"/>
-
+        <activity
+            android:name=".SearchActivity"
+            android:label="검색 페이지" />
+        <activity
+            android:name=".StoreDetailActivity"
+            android:label="스토어 상세 페이지" />
+        <activity
+            android:name=".SubscriptionActivity"
+            android:label="구독 설정 페이지" />
+        <activity
+            android:name=".ReceiptActivity"
+            android:label="결제 페이지" />
+        <activity
+            android:name=".AccountActivity"
+            android:label="입금 페이지" />
     </application>
 
 </manifest>

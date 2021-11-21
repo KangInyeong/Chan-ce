@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QrActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:text="Chan:ce"
+        android:padding="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="185dp"
+        android:layout_marginBottom="7dp"
+        android:text="OR Code"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="360dp"
+        android:layout_height="450dp"
+        android:layout_gravity="center"
+        android:background="@color/ground"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is Kim Hayoon's QR code."
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/qr"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="Please show this QR to scan."/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="Create QR code"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/box"/>
+
+    <Button
+        android:id="@+id/btnMyPage"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="Go Back to My Page"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/box"/>
+
+</LinearLayout>
