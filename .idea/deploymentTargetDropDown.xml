@@ -7,7 +7,6 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-
             <value value="C:\Users\kiyoo\.android\avd\Pixel_2_API_29_1.avd" />
 
         </deviceKey>
@@ -15,6 +14,5 @@
     </targetSelectedWithDropDown>
 
     <timeTargetWasSelectedWithDropDown value="2021-11-19T04:36:09.102838500Z" />
-
   </component>
 </project>
