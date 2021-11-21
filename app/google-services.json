@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "852746668542",
+    "project_id": "chan-ce",
+    "storage_bucket": "chan-ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852746668542:android:c37ec38d441140095198af",
+        "android_client_info": {
+          "package_name": "com.kang.chan_ce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852746668542-ljgom29hdek2c7tvdgirrus6gk8vuq2t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kang.chan_ce",
+            "certificate_hash": "c77ed3ba8699866f8e86dbc4cd79d8d968155419"
+          }
+        },
+        {
+          "client_id": "852746668542-mpvqgqt1mgsubblu30ntaadgqtal3as2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCoE1KNlSAw6geDMZWHxirmdY9GSqKK_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852746668542-mpvqgqt1mgsubblu30ntaadgqtal3as2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
