@@ -36,16 +36,16 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance() // firebase의 authentication
 
         binding.btnGoogle.setOnClickListener {
-//            googleLogin()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            googleLogin()
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
 
         }
 
         binding.btnLogin.setOnClickListener {
-//            signIn(binding.editEmail.toString(), binding.editPw.toString())
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            signIn(binding.editEmail.text.toString(), binding.editPw.text.toString())
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
         }
 
         binding.btnSignup.setOnClickListener {
@@ -74,10 +74,10 @@ class LoginActivity : AppCompatActivity() {
             auth?.signInWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText( baseContext, "Successful login", Toast.LENGTH_SHORT ).show()
+                        Toast.makeText( baseContext, "Successful login $email", Toast.LENGTH_SHORT ).show()
                         moveMainPage(auth?.currentUser)
                     } else {
-                        Toast.makeText( baseContext, "Failure login", Toast.LENGTH_SHORT ).show()
+                        Toast.makeText( baseContext, "Failure login $email $password", Toast.LENGTH_SHORT ).show()
                     }
                 }
         }
@@ -109,21 +109,21 @@ class LoginActivity : AppCompatActivity() {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if(requestCode == GOOGLE_LOGIN_CODE){
-            var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
+            var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)!!
 
             if(result!!.isSuccess) {
-                var accout = result.signInAccount
-                firebaseAuthWithGoogle(accout)
-                Toast.makeText(this,"Login Succes",Toast.LENGTH_SHORT).show()
+                var account = result.signInAccount
+                firebaseAuthWithGoogle(account)
+                Toast.makeText(this,"Login Success",Toast.LENGTH_SHORT).show()
             }
             else{
-                Toast.makeText(this,"Login Fail",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Login Fail ${result.signInAccount} $resultCode $result $data",Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     // Call MainActivity & pass user info
-    fun moveMainPage(user: FirebaseUser?){
+    private fun moveMainPage(user: FirebaseUser?){
         if( user!= null){
             startActivity(Intent(this,MainActivity::class.java))
             finish()
