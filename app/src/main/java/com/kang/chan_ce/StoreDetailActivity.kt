@@ -6,9 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_store_detail.*
 import com.kang.chan_ce.databinding.ActivityStoreDetailBinding
-import kotlinx.android.synthetic.main.item.view.*
 
 class StoreDetailActivity: AppCompatActivity() {
 

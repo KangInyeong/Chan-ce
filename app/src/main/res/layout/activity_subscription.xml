@@ -198,6 +198,7 @@
                         android:textSize="23dp"/>
 
                     <ImageButton
+                        android:id="@+id/btnMinus1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_minus"
@@ -207,6 +208,7 @@
                         android:scaleType="fitCenter"/>
 
                     <TextView
+                        android:id="@+id/btnCount1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -217,6 +219,7 @@
                         android:textSize="25dp"/>
 
                     <ImageButton
+                        android:id="@+id/btnAdd1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_plus"
@@ -244,6 +247,7 @@
                         android:textSize="23dp"/>
 
                     <ImageButton
+                        android:id="@+id/btnMinus2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_minus"
@@ -253,6 +257,7 @@
                         android:scaleType="fitCenter"/>
 
                     <TextView
+                        android:id="@+id/btnCount2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -263,6 +268,7 @@
                         android:textSize="25dp"/>
 
                     <ImageButton
+                        android:id="@+id/btnAdd2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_plus"
@@ -290,6 +296,7 @@
                         android:textSize="23dp"/>
 
                     <ImageButton
+                        android:id="@+id/btnMinus3"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_minus"
@@ -299,6 +306,7 @@
                         android:scaleType="fitCenter"/>
 
                     <TextView
+                        android:id="@+id/btnCount3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -309,6 +317,7 @@
                         android:textSize="25dp"/>
 
                     <ImageButton
+                        android:id="@+id/btnAdd3"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_plus"
@@ -336,17 +345,18 @@
                         android:text="Total"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:layout_weight="0.5"
+                        android:layout_weight="0.9"
                         android:textAlignment="center"/>
 
                     <TextView
+                        android:id="@+id/btnTotal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="0"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:layout_weight="1"
-                        android:textAlignment="center"/>
+                        android:layout_weight="0.8"
+                        android:textAlignment="textEnd"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -354,7 +364,7 @@
                         android:text="￦"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:textAlignment="center"/>
 
                 </LinearLayout>
