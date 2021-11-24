@@ -14,10 +14,11 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:scaleType="centerCrop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitCenter"
             android:layout_gravity="center"
+            android:src="@drawable/chance_logo"
             android:background="@android:color/transparent" />
 
         <TextView
@@ -31,8 +32,9 @@
 
         <ImageButton
             android:id="@+id/btnMyPage"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
             android:background="@android:color/transparent"

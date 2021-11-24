@@ -1,74 +1,35 @@
 package com.kang.chan_ce
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.item.*
-import kotlinx.android.synthetic.main.item.view.*
+
 
 class SearchActivity:AppCompatActivity() {
 
-    var firestore : FirebaseFirestore? = null
+    private lateinit var adapter:ListAdapter
+    private val viewModel by lazy { ViewModelProvider(this).get(ListViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        firestore = FirebaseFirestore.getInstance()
+        adapter = ListAdapter(this)
 
-        recyclerview.adapter = RecyclerViewAdapter()
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        val recyclerView : RecyclerView = findViewById(R.id.recyclerview)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+        observerData()
     }
 
-    inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-        var storeList : ArrayList<StoreData> = arrayListOf()
-
-        init {
-            firestore?.collection("StoreList")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
-
-                storeList.clear()
-
-                for (snapshot in querySnapshot!!.documents) {
-                    var item = snapshot.toObject(StoreData::class.java)
-                    storeList.add(item!!)
-                }
-                notifyDataSetChanged()
-            }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            var view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
-            return ViewHolder(view)
-        }
-
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        }
-
-        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            var viewHolder = (holder as ViewHolder).itemView
-
-//            Glide.with(viewHolder).load(storeList[position].storeImage).into(viewHolder.storeImage)
-//            Log.e("안녕 여기 로그좀","$storeImage ${storeList[position].storeImage}")
-
-            viewHolder.storeName.text = storeList[position].storeName
-            viewHolder.storeLocation.text = storeList[position].storeLocation
-            viewHolder.storeTime.text = storeList[position].storeTime
-        }
-
-        override fun getItemCount(): Int {
-            return storeList.size
-        }
+    fun observerData(){
+        viewModel.fetchData().observe(this, Observer {
+            adapter.setListData(it)
+            adapter.notifyDataSetChanged()
+        })
     }
 
 }
