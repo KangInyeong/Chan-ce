@@ -13,6 +13,8 @@ class AccountActivity :AppCompatActivity(){
         val binding = ActivityAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnTotal.setText(intent.getStringExtra("total cost").toString())
+
         binding.btnBackMainPage.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

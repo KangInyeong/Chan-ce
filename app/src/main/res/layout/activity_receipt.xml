@@ -112,6 +112,7 @@
                     android:layout_marginLeft="20dp"/>
 
                 <TextView
+                    android:id="@+id/btnWeek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nov 22nd ~ Nov 28th"
@@ -143,6 +144,7 @@
                     android:layout_marginLeft="20dp"/>
 
                 <TextView
+                    android:id="@+id/btnDay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MON"
@@ -177,23 +179,56 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="JinMiChae X 1"
-                            android:textColor="@color/black"
-                            android:textSize="20dp"
-                            android:layout_gravity="center"
-                            android:layout_weight="0.6" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="2,500 ￦"
+                            android:text="Kimchi"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/numKimchi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="100"
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textAlignment="textEnd"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="JinMiChae"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/numJinMiChae"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="100"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:layout_gravity="center"
+                            android:textAlignment="textEnd"
+                            android:layout_weight="1" />
 
                     </LinearLayout>
 
@@ -208,20 +243,23 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="MuMaLangE X 1"
+                            android:text="MuMaLangE"
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:layout_gravity="center"
                             android:layout_weight="0.6" />
 
                         <TextView
+                            android:id="@+id/numMuMaLangE"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="2,500 ￦"
+                            android:text="100"
                             android:textColor="@color/black"
                             android:textSize="20dp"
                             android:textAlignment="textEnd"
-                            android:layout_weight="1"/>
+                            android:layout_gravity="center"
+                            android:layout_weight="0.9" />
+
 
                     </LinearLayout>
                 </LinearLayout>
@@ -246,16 +284,17 @@
                         android:text="Total"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:layout_weight="0.5"
+                        android:layout_weight="0.7"
                         android:textAlignment="center"/>
 
                     <TextView
+                        android:id="@+id/btnTotal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="0"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:layout_weight="1"
+                        android:layout_weight="0.8"
                         android:textAlignment="center"/>
 
                     <TextView
