@@ -13,6 +13,17 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.kang.chan_ce.databinding.ActivityStoreDetailBinding
 import kotlinx.android.synthetic.main.item.view.*
+import android.R
+import android.view.View
+
+import android.view.ViewGroup
+import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView
+import net.daum.mf.map.api.MapPOIItem
+
+
+
+
 
 class StoreDetailActivity: AppCompatActivity() {
 
@@ -22,6 +33,31 @@ class StoreDetailActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityStoreDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //map view
+
+        val mapView = MapView(this)
+        binding.mapView.addView(mapView)
+
+        val mapPoint = MapPoint.mapPointWithGeoCoord(37.63033044862495, 127.07586559954198)
+        mapView.setMapCenterPoint(mapPoint, true)
+        mapView.setZoomLevel(1, true)
+
+        //marker 설정
+        //marker 설정
+        val marker = MapPOIItem()
+        marker.itemName = "Default Marker"
+        //marker.setTag(0);
+        //marker.setTag(0);
+        marker.mapPoint = mapPoint
+        marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
+
+        marker.selectedMarkerType =
+            MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+
+        mapView.addPOIItem(marker)
+
 
 //        firestore = FirebaseFirestore.getInstance()
 

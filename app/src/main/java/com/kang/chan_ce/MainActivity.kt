@@ -10,8 +10,18 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.internal.ContextUtils.getActivity
 import com.kang.chan_ce.databinding.ActivityMainBinding
 import me.relex.circleindicator.CircleIndicator3
+import android.content.pm.PackageManager
+
+import android.content.pm.PackageInfo
+import android.util.Base64
+import android.util.Log
+import net.daum.mf.map.api.MapView
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+
 
 class MainActivity : AppCompatActivity() {
+
 
     private val num_page = 4
 
