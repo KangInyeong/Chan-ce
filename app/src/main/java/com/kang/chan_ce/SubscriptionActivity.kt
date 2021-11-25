@@ -2,6 +2,7 @@ package com.kang.chan_ce
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -21,12 +22,14 @@ class SubscriptionActivity :AppCompatActivity() {
         val binding = ActivitySubscriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val store = intent.getStringExtra("StoreName")
+        val menu = intent.getStringExtra("StoreMenu")
+        val menu1 = intent.getStringExtra("StoreMenu1")
+        val menu2 = intent.getStringExtra("StoreMenu2")
 
-        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-        val uid = user?.uid
-
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference()
+        binding.txtmenu.text = menu
+        binding.txtmenu1.text = menu1
+        binding.txtmenu2.text = menu2
 
 
         //spinner
@@ -226,6 +229,13 @@ class SubscriptionActivity :AppCompatActivity() {
 
         binding.btnDone.setOnClickListener {
             val intent = Intent(this, ReceiptActivity::class.java).apply {
+
+                putExtra("storeName",store)
+                Log.v("가게11","$store")
+                putExtra("storeMenu",menu.toString())
+                putExtra("storeMenu1",menu1.toString())
+                putExtra("storeMenu2",menu2.toString())
+
                 putExtra("kimchi",numKimchi.toString())
                 putExtra("jinmichae",numJinmichae.toString())
                 putExtra("mumalange",numMumalange.toString())

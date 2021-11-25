@@ -2,6 +2,7 @@ package com.kang.chan_ce
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,8 +41,6 @@ class SearchActivity:AppCompatActivity() {
 
         var storeList : ArrayList<StoreData> = arrayListOf()
 
-        var menuList : ArrayList<User> = arrayListOf()
-
         init {
             firestore?.collection("StoreList")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
 
@@ -65,6 +64,8 @@ class SearchActivity:AppCompatActivity() {
 
             init {
                 itemView.itemlayout.setOnClickListener {
+                    Log.e("호잉요","${storeList[position].storeMenu?.get(1)?.get("menuPrice")}")
+                    Log.e("호아","${storeList[position].storeMenu?.get(2)?.get("menuIntro")}")
                     val intent = Intent(view.context, StoreDetailActivity::class.java).apply {
                         putExtra("StoreImage",storeList[position].storeImage)
                         putExtra("StoreName",storeList[position].storeName)

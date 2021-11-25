@@ -11,6 +11,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class MypageActivity : AppCompatActivity() {
@@ -19,6 +24,26 @@ class MypageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.reference
+
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+        val userid = uid.toString()
+
+        var username = user?.displayName
+
+        if(username == null){
+            username = "Inyeong"
+        }
+
+        binding.userName.setText(username)
+
+        myRef.child(userid).child("storeName").get().addOnSuccessListener {
+            val value1 = it.value.toString()
+            binding.txtStore.text = value1
+        }
 
         binding.btnMainPage.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

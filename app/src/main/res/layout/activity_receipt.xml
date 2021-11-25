@@ -81,6 +81,7 @@
                     android:layout_marginLeft="20dp"/>
 
                 <TextView
+                    android:id="@+id/storeName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Inyeong's Home"
@@ -181,6 +182,7 @@
 
 
                         <TextView
+                            android:id="@+id/txtmenu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Kimchi"
@@ -211,6 +213,7 @@
 
 
                         <TextView
+                            android:id="@+id/txtmenu1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="JinMiChae"
@@ -241,6 +244,7 @@
                         android:layout_marginRight="30dp">
 
                         <TextView
+                            android:id="@+id/txtmenu2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="MuMaLangE"

@@ -2,7 +2,11 @@ package com.kang.chan_ce
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import com.kang.chan_ce.databinding.ActivityReceiptBinding
 import com.kang.chan_ce.databinding.ActivityStoreDetailBinding
 
@@ -12,6 +16,17 @@ class ReceiptActivity :AppCompatActivity(){
         super.onCreate(savedInstanceState)
         val binding = ActivityReceiptBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference()
+
+        binding.storeName.setText(intent.getStringExtra("storeName"))
+        binding.txtmenu.setText(intent.getStringExtra("storeMenu"))
+        binding.txtmenu1.setText(intent.getStringExtra("storeMenu1"))
+        binding.txtmenu2.setText(intent.getStringExtra("storeMenu2"))
 
         binding.numKimchi.setText(intent.getStringExtra("kimchi").toString())
         binding.numJinMiChae.setText(intent.getStringExtra("jinmichae").toString())
@@ -40,10 +55,14 @@ class ReceiptActivity :AppCompatActivity(){
 
         binding.btnDay.setText(days)
 
+        val store = intent.getStringExtra("storeName")
 
         binding.btnDone.setOnClickListener {
             val intent = Intent(this, AccountActivity::class.java).apply {
                 putExtra("total cost",totalCost.toString())
+
+                val uid = uid.toString()
+                myRef.child(uid).setValue(User(store, totalCost))
             }
             startActivity(intent)
         }
