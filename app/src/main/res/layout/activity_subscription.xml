@@ -188,6 +188,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/txtmenu"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="KimChi"
@@ -237,6 +238,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/txtmenu1"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="JinMiChae"
@@ -286,6 +288,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/txtmenu2"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="MuMalangE"
