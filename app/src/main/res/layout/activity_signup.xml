@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="100dp">
 
 
         <EditText
@@ -34,14 +34,14 @@
             android:hint="Email"
             android:gravity="center"/>
 
-        <Button
+<!--        <Button
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:background="@color/box"
             android:text="  Availability "
             android:gravity="center"
             android:layout_marginLeft="5dp"
-            android:padding="5dp"/>
+            android:padding="5dp"/>-->
 
     </LinearLayout>
 
@@ -62,14 +62,14 @@
             android:hint="Password"
             android:gravity="center"/>
 
-        <TextView
+<!--        <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="  Availability "
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_marginLeft="5dp"
-            android:padding="5dp"/>
+            android:padding="5dp"/>-->
 
     </LinearLayout>
 
@@ -90,7 +90,7 @@
             android:hint="Password Check"
             android:gravity="center"/>
 
-        <TextView
+<!--        <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="         OK        "
@@ -98,7 +98,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_marginLeft="5dp"
-            android:padding="5dp"/>
+            android:padding="5dp"/>-->
 
     </LinearLayout>
 
@@ -118,19 +118,19 @@
             android:hint="Name"
             android:gravity="center"/>
 
-        <TextView
+<!--        <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="  Availability "
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_marginLeft="5dp"
-            android:padding="5dp"/>
+            android:padding="5dp"/>-->
 
 
         </LinearLayout>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -181,7 +181,7 @@
             android:gravity="center"
             android:layout_marginLeft="5dp"
             android:padding="5dp"/>
-    </LinearLayout>
+    </LinearLayout>-->
 
     <Button
         android:id="@+id/btnSignup"
