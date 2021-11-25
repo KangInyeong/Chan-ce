@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 가로스와이프 광고 배너 view fragment
-
-        // 가로스와이프 광고 배너 view fragment
         var mPager = binding.viewPagerAdbanner
         var pagerAdapter = AdAdapter(this,num_page)
         mPager.setAdapter(pagerAdapter)

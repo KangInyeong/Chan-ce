@@ -145,11 +145,182 @@
                 android:paddingLeft="20dp"
                 android:textSize="25dp" />
 
-            <ImageView
+            <LinearLayout
+                android:id="@+id/menulayout"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:paddingBottom="20dp"
-                android:src="@drawable/temp_banchan"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menuImage"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/menuName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="MenuName"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/menuIntro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="MenuIntro"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/menuPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="StoreTime"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₩"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menulayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menuImage1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/menuName1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="MenuName"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/menuIntro1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="MenuIntro"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/menuPrice1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="StoreTime"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₩"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menulayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menuImage2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/menuName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="MenuName"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/menuIntro2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="MenuIntro"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/menuPrice2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="StoreTime"
+                            android:textSize="15sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₩"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

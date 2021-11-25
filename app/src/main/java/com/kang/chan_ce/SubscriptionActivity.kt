@@ -10,8 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kang.chan_ce.databinding.ActivitySubscriptionBinding
 import android.widget.TextView
-
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 
 
 class SubscriptionActivity :AppCompatActivity() {
@@ -20,6 +21,14 @@ class SubscriptionActivity :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivitySubscriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference()
+
 
         //spinner
         val spinner: Spinner = binding.spinner
@@ -135,6 +144,15 @@ class SubscriptionActivity :AppCompatActivity() {
         }
 
         binding.btnDone.setOnClickListener {
+
+            val dataInput = User(
+                uid,
+                intent.getStringExtra("StoreName")
+            )
+
+            myRef.child("hello").setValue(dataInput)
+
+
             val intent = Intent(this, ReceiptActivity::class.java)
             startActivity(intent)
         }

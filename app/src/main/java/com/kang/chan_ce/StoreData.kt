@@ -6,5 +6,6 @@ data class StoreData(
     val storeLocation : String? =null,
     val storeTime : String? = null,
     val storeIntro: String? = null,
-    val storeMenu: Map<String, String>? = null
+    val storeNum: String? = null,
+    val storeMenu: ArrayList<Map<String, String>>? = null
 )

@@ -2,19 +2,19 @@ package com.kang.chan_ce
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.item.*
 import kotlinx.android.synthetic.main.item.view.*
 
 class SearchActivity:AppCompatActivity() {
@@ -29,11 +29,18 @@ class SearchActivity:AppCompatActivity() {
 
         recyclerview.adapter = RecyclerViewAdapter()
         recyclerview.layoutManager = LinearLayoutManager(this)
+        
+        btnBack.setOnClickListener {
+            finish()
+        }
+
     }
 
     inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         var storeList : ArrayList<StoreData> = arrayListOf()
+
+        var menuList : ArrayList<User> = arrayListOf()
 
         init {
             firestore?.collection("StoreList")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
@@ -44,6 +51,7 @@ class SearchActivity:AppCompatActivity() {
                     var item = snapshot.toObject(StoreData::class.java)
                     storeList.add(item!!)
                 }
+
                 notifyDataSetChanged()
             }
         }
@@ -55,7 +63,6 @@ class SearchActivity:AppCompatActivity() {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-
             init {
                 itemView.itemlayout.setOnClickListener {
                     val intent = Intent(view.context, StoreDetailActivity::class.java).apply {
@@ -64,7 +71,46 @@ class SearchActivity:AppCompatActivity() {
                         putExtra("StoreLocation",storeList[position].storeLocation)
                         putExtra("StoreTime",storeList[position].storeTime)
                         putExtra("StoreIntro",storeList[position].storeIntro)
-                        //putExtra("StoreMenu",storeList[position].storeMenu)
+                        putExtra("StoreNum",storeList[position].storeNum)
+                        putExtra("StoreMenu",
+                            storeList[position].storeMenu?.get(0)?.get("menuName")
+                        )
+                        putExtra("menuImage",
+                            storeList[position].storeMenu?.get(0)?.get("menuImage")
+                        )
+                        putExtra("menuIntro",
+                            storeList[position].storeMenu?.get(0)?.get("menuIntro")
+                        )
+                        putExtra("menuPrice",
+                            storeList[position].storeMenu?.get(0)?.get("menuPrice")
+                        )
+
+                        putExtra("StoreMenu1",
+                            storeList[position].storeMenu?.get(1)?.get("menuName")
+                        )
+                        putExtra("menuImage1",
+                            storeList[position].storeMenu?.get(1)?.get("menuImage")
+                        )
+                        putExtra("menuIntro1",
+                            storeList[position].storeMenu?.get(1)?.get("menuIntro")
+                        )
+                        putExtra("menuPrice1",
+                            storeList[position].storeMenu?.get(1)?.get("menuPrice")
+                        )
+
+                        putExtra("StoreMenu2",
+                            storeList[position].storeMenu?.get(2)?.get("menuName")
+                        )
+                        putExtra("menuImage2",
+                            storeList[position].storeMenu?.get(2)?.get("menuImage")
+                        )
+                        putExtra("menuIntro2",
+                            storeList[position].storeMenu?.get(2)?.get("menuIntro")
+                        )
+                        putExtra("menuPrice2",
+                            storeList[position].storeMenu?.get(2)?.get("menuPrice")
+                        )
+
                     }
                     startActivity(intent)
                 }

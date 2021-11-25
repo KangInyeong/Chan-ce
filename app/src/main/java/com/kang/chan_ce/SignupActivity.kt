@@ -56,6 +56,7 @@ class SignupActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
         user?.let {
             startActivity(Intent(this, MainActivity::class.java))
             Toast.makeText(this, "welcome back", Toast.LENGTH_SHORT).show()
