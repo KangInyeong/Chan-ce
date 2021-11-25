@@ -42,8 +42,8 @@ class ReceiptActivity :AppCompatActivity(){
 
 
         binding.btnDone.setOnClickListener {
-            val intent = Intent(this, ReceiptActivity::class.java).apply {
-                putExtra("tatal cost",totalCost.toString())
+            val intent = Intent(this, AccountActivity::class.java).apply {
+                putExtra("total cost",totalCost.toString())
             }
             startActivity(intent)
         }

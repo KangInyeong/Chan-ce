@@ -10,14 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kang.chan_ce.databinding.ActivitySubscriptionBinding
 import android.widget.TextView
-<<<<<<< HEAD
-import kotlinx.android.synthetic.main.item.view.*
-=======
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
->>>>>>> bc56e4adf55b65c1be9852f8d83aac8ba3fc9bda
-
 
 class SubscriptionActivity :AppCompatActivity() {
 
