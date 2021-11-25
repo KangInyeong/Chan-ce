@@ -1,7 +1,13 @@
 package com.kang.chan_ce
 
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
+<<<<<<< HEAD
+import android.util.Base64
+=======
+>>>>>>> 8a60dffbe4b1dee3df7e727d0d837424da24e383
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -14,6 +20,8 @@ import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class SubscriptionActivity :AppCompatActivity() {
 
@@ -22,6 +30,11 @@ class SubscriptionActivity :AppCompatActivity() {
         val binding = ActivitySubscriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        val uid = user?.uid
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference()
         val store = intent.getStringExtra("StoreName")
         val menu = intent.getStringExtra("StoreMenu")
         val menu1 = intent.getStringExtra("StoreMenu1")
