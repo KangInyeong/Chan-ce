@@ -7,5 +7,7 @@ data class StoreData(
     val storeTime : String? = null,
     val storeIntro: String? = null,
     val storeNum: String? = null,
-    val storeMenu: ArrayList<Map<String, String>>? = null
+    val storeMenu: ArrayList<Map<String, String>>? = null,
+    val xlatitude: String? = null,
+    val ylatitude: String? = null
 )

@@ -4,10 +4,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
-<<<<<<< HEAD
 import android.util.Base64
-=======
->>>>>>> 8a60dffbe4b1dee3df7e727d0d837424da24e383
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView

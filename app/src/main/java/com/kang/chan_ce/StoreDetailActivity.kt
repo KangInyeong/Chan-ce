@@ -30,14 +30,27 @@ class StoreDetailActivity: AppCompatActivity() {
         val binding = ActivityStoreDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         //map view
 
         val mapView = MapView(this)
         binding.mapView.addView(mapView)
 
-        val mapPoint = MapPoint.mapPointWithGeoCoord(37.63033044862495, 127.07586559954198)
+
+
+        val xlatitude = intent.getStringExtra("x")?.toDouble()
+        val ylatitude = intent.getStringExtra("y")?.toDouble()
+        Log.e("위치","$ylatitude")
+        val mapPoint = xlatitude?.let { ylatitude?.let { it1 ->
+            MapPoint.mapPointWithGeoCoord(it,
+                it1
+            )
+        } }
+
         mapView.setMapCenterPoint(mapPoint, true)
         mapView.setZoomLevel(1, true)
+
 
         //marker 설정
         //marker 설정
@@ -50,7 +63,6 @@ class StoreDetailActivity: AppCompatActivity() {
 
         marker.selectedMarkerType =
             MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-
 
         mapView.addPOIItem(marker)
 

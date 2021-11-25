@@ -111,6 +111,9 @@ class SearchActivity:AppCompatActivity() {
                         putExtra("menuPrice2",
                             storeList[position].storeMenu?.get(2)?.get("menuPrice")
                         )
+                        putExtra("x",storeList[position].xlatitude)
+                        putExtra("y",storeList[position].ylatitude)
+                        Log.e("위치다","${storeList[position].ylatitude}")
 
                     }
                     startActivity(intent)
