@@ -59,6 +59,13 @@
             android:textColor="@color/black"
             android:textSize="40dp" />
 
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="hell"
+            android:id="@+id/mSearchName"
+            />
+
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"

@@ -30,8 +30,6 @@ class SubscriptionActivity :AppCompatActivity() {
         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         val uid = user?.uid
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference()
         val store = intent.getStringExtra("StoreName")
         val menu = intent.getStringExtra("StoreMenu")
         val menu1 = intent.getStringExtra("StoreMenu1")

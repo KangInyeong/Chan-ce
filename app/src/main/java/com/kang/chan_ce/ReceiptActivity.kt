@@ -1,14 +1,18 @@
 package com.kang.chan_ce
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.kang.chan_ce.databinding.ActivityReceiptBinding
 import com.kang.chan_ce.databinding.ActivityStoreDetailBinding
+import kotlinx.android.synthetic.main.activity_receipt.*
 
 class ReceiptActivity :AppCompatActivity(){
 
@@ -65,6 +69,19 @@ class ReceiptActivity :AppCompatActivity(){
                 myRef.child(uid).setValue(User(store, totalCost))
             }
             startActivity(intent)
+        }
+
+        btnCheckBox.setOnClickListener{
+            AlertDialog.Builder(this)
+                .setTitle("Agreement")
+                .setMessage("Are you sure this receipt's information?")
+                .setPositiveButton("Sure", DialogInterface.OnClickListener { dialog, which ->
+                    Toast.makeText(this, "Complete Agreement", Toast.LENGTH_SHORT).show()
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+                    Toast.makeText(this, "Not Agreement", Toast.LENGTH_SHORT).show()
+                })
+                .show()
         }
 
 

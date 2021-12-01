@@ -10,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.item.view.*
@@ -64,9 +60,10 @@ class SearchActivity:AppCompatActivity() {
 
             init {
                 itemView.itemlayout.setOnClickListener {
-                    Log.e("호잉요","${storeList[position].storeMenu?.get(1)?.get("menuPrice")}")
-                    Log.e("호아","${storeList[position].storeMenu?.get(2)?.get("menuIntro")}")
+
                     val intent = Intent(view.context, StoreDetailActivity::class.java).apply {
+                        putExtra("x",storeList[position].ylatitude)
+                        putExtra("y",storeList[position].xlatitude)
                         putExtra("StoreImage",storeList[position].storeImage)
                         putExtra("StoreName",storeList[position].storeName)
                         putExtra("StoreLocation",storeList[position].storeLocation)
