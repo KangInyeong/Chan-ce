@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
          })
 
         binding.btnMyPage.setOnClickListener {
-            Toast.makeText( this, "login $username", Toast.LENGTH_SHORT ).show()
+//            Toast.makeText( this, "login $username", Toast.LENGTH_SHORT ).show()
             val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
