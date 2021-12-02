@@ -44,9 +44,9 @@ class SignupActivity : AppCompatActivity() {
 
         createAccountInputsArray = arrayOf(binding.editEmail, binding.editPw, binding.editPw2)
 
-        namebtn.setOnClickListener {
+/*        namebtn.setOnClickListener {
 
-        }
+        }*/
 
 
         //가입

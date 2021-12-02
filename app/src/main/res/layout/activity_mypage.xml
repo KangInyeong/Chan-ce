@@ -8,263 +8,322 @@
     tools:context=".MypageActivity"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        android:textAlignment="center"
-        android:text="Chan:ce"
-        android:padding="20dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:paddingRight="25dp"
+        android:paddingLeft="25dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="185dp"
-        android:layout_marginBottom="7dp"
-        android:text="My Page"
-        android:id="@+id/textView9"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="360dp"
-        android:layout_height="540dp"
-        android:layout_gravity="center"
-        android:background="@color/ground"
-        android:orientation="vertical">
+        <TextView
+            android:layout_width="326dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/bold"
+            android:text="Chan:ce"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
+        <ImageButton
+            android:id="@+id/btnMainPage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_mainpage"/>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/userName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="User Name"
-                android:textAlignment="center"
+                android:paddingLeft="20dp"
+                android:text="My Page"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:padding="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/medium"
                 android:layout_marginLeft="20dp"
-                android:textSize="30sp" />
+                android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/btnQr1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:background="@color/gray1"
-                android:padding="4dp"
-                android:text="CREATE QR"
-                android:textSize="10sp" />
-            <Button
-                android:id="@+id/btnQr2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:padding="4dp"
-                android:text="SCAN QR"
-                android:textSize="10sp"
-                android:background="@color/gray1"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="My Subscription Info"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <LinearLayout
-            android:layout_width="270dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/box"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="100dp"
-                android:layout_height="34dp"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:text="1WEEK"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_gravity="center"
-                android:textAlignment="center"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:gravity="center"
-                android:text="Nov 22nd ~ Nov 28th"
-                android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/txtStore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Inyeong's Home"
-                    android:textSize="14sp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"
+                card_view:cardCornerRadius="10dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
                     android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnMore"
-                android:layout_width="45dp"
-                android:layout_height="22dp"
-                android:padding="3dp"
-                android:gravity="center"
-                android:background="@color/gray1"
-                android:text="More"
-                android:layout_margin="2dp"
-                android:textSize="12sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:padding="3dp"
-                android:text="Deposit"
-                android:textColor="@color/green"
-                android:gravity="center"
-                android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User Name"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/bold"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="25dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/btnQr1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_scan_qr"
+                        android:scaleType="fitCenter"
+                        android:layout_weight="0.5"/>
+
+                    <ImageView
+                        android:id="@+id/btnQr2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_read_qr"
+                        android:layout_weight="0.5"/>
                 </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="270dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/box"
-            android:orientation="horizontal">
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="34dp"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:text="1WEEK"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:textAlignment="center"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="My Subscription Info"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp" />
+
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_gravity="center"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"
+                card_view:cardCornerRadius="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="3dp"
-                    android:gravity="center"
-                    android:text="Nov 29th ~ Dec 5th"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/txtStore1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="Moproo Restau"
-                    android:textSize="14sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_gravity="center"
                     android:orientation="horizontal">
-                    <Button
-                        android:id="@+id/btnMore1"
-                        android:layout_width="45dp"
-                        android:layout_height="22dp"
-                        android:padding="3dp"
-                        android:gravity="center"
-                        android:background="@color/gray1"
-                        android:text="More"
-                        android:layout_margin="2dp"
-                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 WEEK"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/medium"
+                        android:textAlignment="center"
+                        android:layout_weight="0.5"
+                        android:textSize="18dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Nov 22nd ~ Nov 28th"
+                            android:fontFamily="@font/regular"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="3dp"
+                            android:textSize="15dp"/>
+
+                        <TextView
+                            android:id="@+id/txtStore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/regular"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:text="Inyeong's Home" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/btnMore"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="More"
+                                android:src="@drawable/ic_more"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Deposit"
+                                android:layout_marginLeft="10dp"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/medium"
+                                android:textColor="#67A7D6"
+                                android:gravity="center"
+                                android:textSize="15dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="2dp"
-                        android:padding="3dp"
-                        android:text="Not Deposit"
-                        android:textColor="@color/red"
-                        android:gravity="center"
-                        android:textSize="12sp"/>
+                        android:text="1 WEEK"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/medium"
+                        android:textAlignment="center"
+                        android:layout_weight="0.5"
+                        android:textSize="18dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Nov 29th ~ Dec 5th"
+                            android:fontFamily="@font/regular"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="3dp"
+                            android:textSize="15dp"/>
+
+                        <TextView
+                            android:id="@+id/txtStore1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/regular"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:text="Hayoon's Store" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/btnMore1"
+                                android:layout_width="70dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:src="@drawable/ic_more"
+                                android:text="More" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Not Deposit"
+                                android:layout_marginLeft="10dp"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/medium"
+                                android:textColor="@color/gray1"
+                                android:gravity="center"
+                                android:textSize="15dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
-            </LinearLayout>
-
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
+    </ScrollView>
 
-        <Button
-            android:id="@+id/btnPast"
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:text="See past receipts"
-            android:gravity="center"
-            android:background="@color/gray1"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Log Out"
-            android:gravity="center"
-            android:background="@color/gray1"
-            android:textSize="16sp" />
-
-</LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnMainPage"
-        android:layout_width="360dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:text="Go to Main Page"
-        android:textSize="18dp"
+    <ImageView
+        android:id="@+id/btnPast"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@color/box"/>
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_past" />
+
+    <ImageView
+        android:id="@+id/btnLogout"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_logout" />
+
+
 </LinearLayout>
+

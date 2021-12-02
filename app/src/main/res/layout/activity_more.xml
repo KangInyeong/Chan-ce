@@ -7,154 +7,347 @@
     tools:context=".MoreActivity"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        android:textAlignment="center"
-        android:text="Chan:ce"
-        android:padding="20dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:paddingRight="25dp"
+        android:paddingLeft="25dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="185dp"
-        android:layout_marginBottom="7dp"
-        android:text="More Subscription Info"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="360dp"
-        android:layout_height="540dp"
-        android:layout_gravity="center"
-        android:background="@color/ground"
-        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/btnMyPage"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back"/>
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+            android:layout_width="326dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="1 Week"
+            android:layout_weight="1"
+            android:fontFamily="@font/bold"
+            android:text="Chan:ce"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textView34"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="Nov 22 ~ Nov 28"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/txtStore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="Inyeong's Home"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/txtDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="MON WED"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/textView55"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="JinMiChae X1"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/textView66"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="MuMaLangE X1"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/txtDeposit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="Already be deposited"
-            android:textAlignment="center"
-            android:textColor="@color/green"
-            android:textSize="30sp"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/txtNot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="Not yet Pick-up"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            android:textSize="30sp"
-            android:layout_gravity="center"/>
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnMyPage"
-        android:layout_width="360dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:text="Go to My Page"
-        android:textSize="18dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@color/box"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="More Subscription Info"
+                android:textColor="@color/black"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/medium"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp" />
+
+
+
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
+                card_view:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/medium"
+                        android:text="WEEK 1"
+                        android:textColor="#67A7D6"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/btnWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nov 22nd ~ Nov 28th"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medium"
+                        android:textSize="18dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="20dp"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
+                card_view:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Restaurant Name"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/regular"
+                        android:textSize="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <TextView
+                        android:id="@+id/txtStore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Inyeong's Home"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/medium"
+                        android:textSize="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
+                card_view:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pick-up Day"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/regular"
+                        android:textSize="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="20dp"/>
+
+                    <TextView
+                        android:id="@+id/btnDay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MON"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/medium"
+                        android:textSize="18dp"
+                        android:layout_marginBottom="20dp"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                card_view:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Menu"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/regular"
+                        android:textSize="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="30dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp">
+
+
+                        <TextView
+                            android:id="@+id/txtmenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="김치"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/medium"
+                            android:textSize="18dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.6"/>
+
+                        <TextView
+                            android:id="@+id/numKimchi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/medium"
+                            android:textSize="18dp"
+                            android:textAlignment="textEnd"
+                            android:layout_weight="0.9" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp">
+
+
+                        <TextView
+                            android:id="@+id/txtmenu1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="진미채"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/medium"
+                            android:textSize="18dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.6" />
+
+                        <TextView
+                            android:id="@+id/numJinMiChae"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/medium"
+                            android:textSize="18dp"
+                            android:textAlignment="textEnd"
+                            android:layout_weight="0.9" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp">
+
+                        <TextView
+                            android:id="@+id/txtmenu2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="무말랭이"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/medium"
+                            android:textSize="18dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.6" />
+
+                        <TextView
+                            android:id="@+id/numMuMaLangE"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/medium"
+                            android:textSize="18dp"
+                            android:textAlignment="textEnd"
+                            android:layout_weight="0.9" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Already be deposited"
+                android:textAlignment="center"
+                android:textColor="#67A7D6"
+                android:fontFamily="@font/bold"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Not yet pick-up"
+                android:textAlignment="center"
+                android:textColor="@color/gray1"
+                android:fontFamily="@font/bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:textSize="20dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
