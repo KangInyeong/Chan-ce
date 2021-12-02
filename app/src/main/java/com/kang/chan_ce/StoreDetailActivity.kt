@@ -64,6 +64,7 @@ class StoreDetailActivity: AppCompatActivity() {
 ////
 ////        mapView.addPOIItem(marker)
 
+
         val url = intent.getStringExtra("StoreImage")
         val store = intent.getStringExtra("StoreName")
 

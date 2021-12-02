@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="140dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true"
@@ -23,11 +23,11 @@
 
             <ImageView
                 android:id="@+id/storeImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="20dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
                 app:layout_constraintTop_toTopOf="parent"/>
 
 
@@ -42,21 +42,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="StoreName"
-                    android:textSize="24sp" />
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/medium"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/storeLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="StoreLocation"
-                    android:textSize="15sp" />
+                    android:text="StoreLocation"                    android:fontFamily="@font/regular"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="13dp" />
 
                 <TextView
                     android:id="@+id/storeTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:textColor="@color/black"
                     android:text="StoreTime"
-                    android:textSize="15sp"/>
+                    android:textSize="13dp"/>
 
             </LinearLayout>
 
