@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kang.chan_ce.databinding.ActivityMypageBinding
-import com.kang.chan_ce.databinding.ActivitySearchBinding
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -44,9 +43,16 @@ class MypageActivity : AppCompatActivity() {
 
         binding.userName.setText(username)
 
+        var store :String = ""
+
         myRef.child(userid).child("storeName").get().addOnSuccessListener {
-            val value1 = it.value.toString()
-            binding.txtStore.text = value1
+            store = it.value.toString()
+            binding.txtStore.text = store
+        }
+
+        myRef.child(userid).child("subWeek").get().addOnSuccessListener {
+            val value2 = it.value.toString()
+            binding.txtweek.text = value2
         }
 
         binding.btnMainPage.setOnClickListener {
@@ -66,14 +72,16 @@ class MypageActivity : AppCompatActivity() {
         }
 
         binding.btnMore.setOnClickListener {
-            val intent = Intent(this, MoreActivity::class.java)
+            val intent = Intent(this, MoreActivity::class.java).apply {
+                putExtra("storename",store)
+            }
             startActivity(intent)
         }
 
-        binding.btnMore1.setOnClickListener {
-            val intent = Intent(this, MoreActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.btnMore1.setOnClickListener {
+//            val intent = Intent(this, MoreActivity::class.java)
+//            startActivity(intent)
+//        }
 
         binding.btnLogout.setOnClickListener{
             FirebaseAuth.getInstance().signOut()

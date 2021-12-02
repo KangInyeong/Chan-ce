@@ -18,6 +18,9 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.kang.chan_ce.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -25,6 +28,15 @@ class LoginActivity : AppCompatActivity() {
     private var auth : FirebaseAuth? = null //firebase 인증 변수
     private var googleSignInClient : GoogleSignInClient? = null // google 로그인 연동 변수
     private var GOOGLE_LOGIN_CODE = 9001 //임의로 설정 가능
+
+    val db = Firebase.firestore
+
+    val user = hashMapOf(
+        "uid" to "1234",
+        "email" to "kiyoog02@naver.com",
+        "pw" to "dlsdud",
+        "name" to "Inyeong"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

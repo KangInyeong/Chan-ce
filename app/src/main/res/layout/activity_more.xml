@@ -52,7 +52,7 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/textView34"
+            android:id="@+id/txtweek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -91,7 +91,20 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/textView55"
+            android:id="@+id/txtmenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="Kimchi X1"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/txtmenu1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -104,7 +117,7 @@
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/textView66"
+            android:id="@+id/txtmenu2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -124,9 +137,9 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="15dp"
-            android:text="Already be deposited"
+            android:text="Not deposited"
             android:textAlignment="center"
-            android:textColor="@color/green"
+            android:textColor="@color/red"
             android:textSize="30sp"
             android:layout_gravity="center"/>
 
