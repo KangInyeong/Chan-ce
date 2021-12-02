@@ -17,13 +17,13 @@
         android:padding="20dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView9"
+        android:layout_width="234dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginEnd="185dp"
         android:layout_marginBottom="7dp"
         android:text="More Subscription Info"
-        android:id="@+id/textView9"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="15dp"
-            android:text="Nov 23 ~ Nov 28"
+            android:text="Nov 22 ~ Nov 28"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30sp" />
@@ -73,6 +73,19 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="15dp"
             android:text="Inyeong's Home"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/txtDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="MON WED"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30sp" />
