@@ -17,6 +17,7 @@ import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_subscription.*
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -39,6 +40,7 @@ class SubscriptionActivity :AppCompatActivity() {
         binding.txtmenu1.text = menu1
         binding.txtmenu2.text = menu2
 
+        var items = arrayOf("수퍼맨", "아이언맨", "스파이더맨", "배트맨")
 
         //spinner
         val spinner: Spinner = binding.spinner
@@ -52,6 +54,18 @@ class SubscriptionActivity :AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
             spinner.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?,  position: Int, id: Long
+            ) {
+                spintxt.setText(items[position])
+                Log.d("test", "onItemSelected: ${items[position]} // $position, ${spinner.getItemAtPosition(position)}")
+            }
         }
 
         var numDay = 0
@@ -82,100 +96,93 @@ class SubscriptionActivity :AppCompatActivity() {
         //select day
         binding.btnMON.setOnClickListener {
             binding.btnMON?.isSelected = binding.btnMON.isSelected != true
-            if (binding.btnMON.isSelected == true){
+            if (binding.btnMON.isSelected == true) {
                 numDay++
                 mon = "MON"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 mon = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
         }
 
         binding.btnTUE.setOnClickListener {
             binding.btnTUE?.isSelected = binding.btnTUE.isSelected != true
-            if (binding.btnTUE.isSelected == true){
+            if (binding.btnTUE.isSelected == true) {
                 numDay++
                 tue = "TUE"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 tue = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
         }
 
         binding.btnWED.setOnClickListener {
             binding.btnWED?.isSelected = binding.btnWED.isSelected != true
-            if (binding.btnWED.isSelected == true){
+            if (binding.btnWED.isSelected == true) {
                 numDay++
                 wed = "WED"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 wed = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
         }
 
         binding.btnTHU.setOnClickListener {
             binding.btnTHU?.isSelected = binding.btnTHU.isSelected != true
-            if (binding.btnTHU.isSelected == true){
+            if (binding.btnTHU.isSelected == true) {
                 numDay++
-                thu= "THU"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                thu = "THU"
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 thu = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
 
         }
 
         binding.btnFRI.setOnClickListener {
             binding.btnFRI?.isSelected = binding.btnFRI.isSelected != true
-            if (binding.btnFRI.isSelected == true){
+            if (binding.btnFRI.isSelected == true) {
                 numDay++
                 fri = "FRI"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 fri = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
         }
 
         binding.btnSAT.setOnClickListener {
             binding.btnSAT?.isSelected = binding.btnSAT.isSelected != true
-            if (binding.btnSAT.isSelected == true){
+            if (binding.btnSAT.isSelected == true) {
                 numDay++
                 sat = "SAT"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 sat = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
         }
 
         binding.btnSUN.setOnClickListener {
             binding.btnSUN?.isSelected = binding.btnSUN.isSelected != true
-            if (binding.btnSUN.isSelected == true){
+            if (binding.btnSUN.isSelected == true) {
                 numDay++
                 sun = "SUN"
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }
-            else{
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
                 numDay--
                 sun = ""
-                binding.btnTotal.setText((numDay*totalCost).toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
             }
         }
 
@@ -184,84 +191,87 @@ class SubscriptionActivity :AppCompatActivity() {
         binding.btnAdd1.setOnClickListener {
             count1++
             numKimchi++
-            totalCost+=kimchi
+            totalCost += kimchi
             binding.btnCount1.setText(count1.toString())
-            binding.btnTotal.setText((numDay*totalCost).toString())
+            binding.btnTotal.setText((numDay * totalCost).toString())
         }
 
         binding.btnAdd2.setOnClickListener {
             count2++
             numJinmichae++
-            totalCost+=jinmichae
+            totalCost += jinmichae
             binding.btnCount2.setText(count2.toString())
-            binding.btnTotal.setText((numDay*totalCost).toString())
+            binding.btnTotal.setText((numDay * totalCost).toString())
         }
 
         binding.btnAdd3.setOnClickListener {
             count3++
             numMumalange++
-            totalCost+=mumalange
+            totalCost += mumalange
             binding.btnCount3.setText(count3.toString())
-            binding.btnTotal.setText((numDay*totalCost).toString())
+            binding.btnTotal.setText((numDay * totalCost).toString())
         }
 
         binding.btnMinus1.setOnClickListener {
             if (count1 > 0) {
                 count1--
                 numKimchi--
-                totalCost-=kimchi
+                totalCost -= kimchi
                 binding.btnCount1.setText(count1.toString())
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }else {}
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
+            }
         }
 
         binding.btnMinus2.setOnClickListener {
             if (count2 > 0) {
                 count2--
                 numJinmichae--
-                totalCost-=jinmichae
+                totalCost -= jinmichae
                 binding.btnCount2.setText(count2.toString())
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }else {}
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
+            }
         }
 
         binding.btnMinus3.setOnClickListener {
             if (count3 > 0) {
                 count3--
                 numMumalange--
-                totalCost-=mumalange
+                totalCost -= mumalange
                 binding.btnCount3.setText(count3.toString())
-                binding.btnTotal.setText((numDay*totalCost).toString())
-            }else {}
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            } else {
+            }
         }
 
         binding.btnDone.setOnClickListener {
             val intent = Intent(this, ReceiptActivity::class.java).apply {
 
-                putExtra("storeName",store)
-                Log.v("가게11","$store")
-                putExtra("storeMenu",menu.toString())
-                putExtra("storeMenu1",menu1.toString())
-                putExtra("storeMenu2",menu2.toString())
+                putExtra("storeName", store)
+                Log.v("가게11", "$store")
+                putExtra("storeMenu", menu.toString())
+                putExtra("storeMenu1", menu1.toString())
+                putExtra("storeMenu2", menu2.toString())
 
-                putExtra("kimchi",numKimchi.toString())
-                putExtra("jinmichae",numJinmichae.toString())
-                putExtra("mumalange",numMumalange.toString())
-                putExtra("total cost",(numDay*totalCost).toString())
+                putExtra("kimchi", numKimchi.toString())
+                putExtra("jinmichae", numJinmichae.toString())
+                putExtra("mumalange", numMumalange.toString())
+                putExtra("total cost", (numDay * totalCost).toString())
 
-                putExtra("mon",mon.toString())
-                putExtra("tue",tue.toString())
-                putExtra("wed",wed.toString())
-                putExtra("thu",thu.toString())
-                putExtra("fri",fri.toString())
-                putExtra("sat",sat.toString())
-                putExtra("sun",sun.toString())
+                putExtra("mon", mon.toString())
+                putExtra("tue", tue.toString())
+                putExtra("wed", wed.toString())
+                putExtra("thu", thu.toString())
+                putExtra("fri", fri.toString())
+                putExtra("sat", sat.toString())
+                putExtra("sun", sun.toString())
 
             }
             startActivity(intent)
         }
 
-        binding.btnBack.setOnClickListener{
+        binding.btnBack.setOnClickListener {
             finish()
         }
     }

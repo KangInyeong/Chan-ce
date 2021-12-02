@@ -61,14 +61,21 @@ class ReceiptActivity :AppCompatActivity(){
 
         val store = intent.getStringExtra("storeName")
 
-        binding.btnDone.setOnClickListener {
-            val intent = Intent(this, AccountActivity::class.java).apply {
-                putExtra("total cost",totalCost.toString())
+        var check = false
 
-                val uid = uid.toString()
-                myRef.child(uid).setValue(User(store, totalCost))
+        binding.btnDone.setOnClickListener {
+            if(!check){
+                Toast.makeText(this, "You have to check the agreement!", Toast.LENGTH_SHORT).show()
+            }else{
+                val intent = Intent(this, AccountActivity::class.java).apply {
+                    putExtra("total cost",totalCost.toString())
+
+                    val uid = uid.toString()
+                    myRef.child(uid).setValue(User(store, totalCost))
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
+
         }
 
         btnCheckBox.setOnClickListener{
@@ -77,9 +84,11 @@ class ReceiptActivity :AppCompatActivity(){
                 .setMessage("Are you sure this receipt's information?")
                 .setPositiveButton("Sure", DialogInterface.OnClickListener { dialog, which ->
                     Toast.makeText(this, "Complete Agreement", Toast.LENGTH_SHORT).show()
+                    check = true
                 })
                 .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
                     Toast.makeText(this, "Not Agreement", Toast.LENGTH_SHORT).show()
+                    check = false
                 })
                 .show()
         }

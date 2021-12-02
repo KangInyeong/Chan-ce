@@ -22,12 +22,16 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.EditText
 import com.kang.chan_ce.databinding.ActivitySignupBinding
+import kotlinx.android.synthetic.main.activity_mypage.*
+import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
 
     lateinit var userEmail: String
     lateinit var userPassword: String
     lateinit var createAccountInputsArray: Array<EditText>
+
+    lateinit var userName: String
 
     private lateinit var binding: ActivitySignupBinding
 
@@ -40,9 +44,19 @@ class SignupActivity : AppCompatActivity() {
 
         createAccountInputsArray = arrayOf(binding.editEmail, binding.editPw, binding.editPw2)
 
+        namebtn.setOnClickListener {
+
+        }
+
+
         //가입
         binding.btnSignup.setOnClickListener {
+            userName = binding.editName.text.toString().trim()
+            Intent(this, MainActivity::class.java).apply {
+                putExtra("username",userName)
+            }
             signIn()
+            startActivity(intent)
         }
 
         //로그인으로 돌아가기

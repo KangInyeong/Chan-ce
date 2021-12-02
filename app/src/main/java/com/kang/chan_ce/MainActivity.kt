@@ -15,6 +15,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageInfo
 import android.util.Base64
 import android.util.Log
+import android.widget.Toast
 import net.daum.mf.map.api.MapView
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val username = intent.getStringExtra("username").toString()
 
         // 가로스와이프 광고 배너 view fragment
         var mPager = binding.viewPagerAdbanner
@@ -64,6 +67,7 @@ class MainActivity : AppCompatActivity() {
          })
 
         binding.btnMyPage.setOnClickListener {
+            Toast.makeText( this, "login $username", Toast.LENGTH_SHORT ).show()
             val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
