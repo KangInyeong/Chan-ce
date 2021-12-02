@@ -181,7 +181,7 @@
                         android:layout_marginLeft="20dp"/>
 
                     <TextView
-                        android:id="@+id/btnDay"
+                        android:id="@+id/txtDay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="MON"
