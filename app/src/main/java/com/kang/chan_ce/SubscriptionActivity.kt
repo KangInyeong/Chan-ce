@@ -36,11 +36,12 @@ class SubscriptionActivity :AppCompatActivity() {
         val menu1 = intent.getStringExtra("StoreMenu1")
         val menu2 = intent.getStringExtra("StoreMenu2")
 
+        var week = ""
+
         binding.txtmenu.text = menu
         binding.txtmenu1.text = menu1
         binding.txtmenu2.text = menu2
 
-        var items = arrayOf("수퍼맨", "아이언맨", "스파이더맨", "배트맨")
 
         //spinner
         val spinner: Spinner = binding.spinner
@@ -63,8 +64,8 @@ class SubscriptionActivity :AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?,  position: Int, id: Long
             ) {
-                spintxt.setText(items[position])
-                Log.d("test", "onItemSelected: ${items[position]} // $position, ${spinner.getItemAtPosition(position)}")
+                week = spinner.getItemAtPosition(position) as String
+
             }
         }
 
@@ -189,27 +190,42 @@ class SubscriptionActivity :AppCompatActivity() {
         //banchan num count
 
         binding.btnAdd1.setOnClickListener {
-            count1++
-            numKimchi++
-            totalCost += kimchi
-            binding.btnCount1.setText(count1.toString())
-            binding.btnTotal.setText((numDay * totalCost).toString())
+            if(binding.btnMON.isSelected || binding.btnTUE.isSelected || binding.btnWED.isSelected || binding.btnTHU.isSelected || binding.btnFRI.isSelected || binding.btnSAT.isSelected || binding.btnSUN.isSelected){
+                count1++
+                numKimchi++
+                totalCost += kimchi
+                binding.btnCount1.setText(count1.toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            }else{
+                Toast.makeText( this, "You have to select Pick-up day! ", Toast.LENGTH_SHORT ).show()
+            }
+
         }
 
         binding.btnAdd2.setOnClickListener {
-            count2++
-            numJinmichae++
-            totalCost += jinmichae
-            binding.btnCount2.setText(count2.toString())
-            binding.btnTotal.setText((numDay * totalCost).toString())
+            if(binding.btnMON.isSelected || binding.btnTUE.isSelected || binding.btnWED.isSelected || binding.btnTHU.isSelected || binding.btnFRI.isSelected || binding.btnSAT.isSelected || binding.btnSUN.isSelected){
+                count2++
+                numJinmichae++
+                totalCost += jinmichae
+                binding.btnCount2.setText(count2.toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            }else{
+                Toast.makeText( this, "You have to select Pick-up day! ", Toast.LENGTH_SHORT ).show()
+            }
+
         }
 
         binding.btnAdd3.setOnClickListener {
-            count3++
-            numMumalange++
-            totalCost += mumalange
-            binding.btnCount3.setText(count3.toString())
-            binding.btnTotal.setText((numDay * totalCost).toString())
+            if(binding.btnMON.isSelected || binding.btnTUE.isSelected || binding.btnWED.isSelected || binding.btnTHU.isSelected || binding.btnFRI.isSelected || binding.btnSAT.isSelected || binding.btnSUN.isSelected){
+                count3++
+                numMumalange++
+                totalCost += mumalange
+                binding.btnCount3.setText(count3.toString())
+                binding.btnTotal.setText((numDay * totalCost).toString())
+            }else{
+                Toast.makeText( this, "You have to select Pick-up day! ", Toast.LENGTH_SHORT ).show()
+            }
+
         }
 
         binding.btnMinus1.setOnClickListener {
@@ -246,33 +262,50 @@ class SubscriptionActivity :AppCompatActivity() {
         }
 
         binding.btnDone.setOnClickListener {
-            val intent = Intent(this, ReceiptActivity::class.java).apply {
+            if(week != "Select A Week" ){
+                if(binding.btnMON.isSelected || binding.btnTUE.isSelected || binding.btnWED.isSelected || binding.btnTHU.isSelected || binding.btnFRI.isSelected || binding.btnSAT.isSelected || binding.btnSUN.isSelected){
+                    if(numKimchi != 0 || numJinmichae != 0 || numMumalange != 0 ){
+                        val intent = Intent(this, ReceiptActivity::class.java).apply {
 
-                putExtra("storeName", store)
-                Log.v("가게11", "$store")
-                putExtra("storeMenu", menu.toString())
-                putExtra("storeMenu1", menu1.toString())
-                putExtra("storeMenu2", menu2.toString())
+                            putExtra("storeName", store)
+                            Log.v("가게11", "$store")
+                            putExtra("storeMenu", menu.toString())
+                            putExtra("storeMenu1", menu1.toString())
+                            putExtra("storeMenu2", menu2.toString())
 
-                putExtra("kimchi", numKimchi.toString())
-                putExtra("jinmichae", numJinmichae.toString())
-                putExtra("mumalange", numMumalange.toString())
-                putExtra("total cost", (numDay * totalCost).toString())
+                            putExtra("kimchi", numKimchi.toString())
+                            putExtra("jinmichae", numJinmichae.toString())
+                            putExtra("mumalange", numMumalange.toString())
+                            putExtra("total cost", (numDay * totalCost).toString())
 
-                putExtra("mon", mon.toString())
-                putExtra("tue", tue.toString())
-                putExtra("wed", wed.toString())
-                putExtra("thu", thu.toString())
-                putExtra("fri", fri.toString())
-                putExtra("sat", sat.toString())
-                putExtra("sun", sun.toString())
+                            putExtra("week", week)
 
+                            putExtra("mon", mon.toString())
+                            putExtra("tue", tue.toString())
+                            putExtra("wed", wed.toString())
+                            putExtra("thu", thu.toString())
+                            putExtra("fri", fri.toString())
+                            putExtra("sat", sat.toString())
+                            putExtra("sun", sun.toString())
+
+                        }
+                        startActivity(intent)
+                    }else{
+                        Toast.makeText( this, "You have to select the number of side-dish! ", Toast.LENGTH_SHORT ).show()
+                    }
+                }else{
+                    Toast.makeText( this, "You have to select Pick-up day! ", Toast.LENGTH_SHORT ).show()
+                }
+
+            }else{
+                Toast.makeText( this, "You have to select subscripton period! ", Toast.LENGTH_SHORT ).show()
             }
-            startActivity(intent)
+
         }
 
         binding.btnBack.setOnClickListener {
             finish()
         }
+
     }
 }

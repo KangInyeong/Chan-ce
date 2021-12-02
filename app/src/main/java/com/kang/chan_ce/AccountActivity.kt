@@ -17,11 +17,15 @@ class AccountActivity :AppCompatActivity(){
 
         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         val uid = user?.uid
+        val useremail = user?.email
 
         var username = user?.displayName
 
-        if(username == null){
-            username = "Inyeong"
+        if(username == ""){
+            val email_list = useremail?.split("@")
+            if (username != null) {
+                username = email_list!![0]
+            }
         }
 
         binding.userName.setText(username)

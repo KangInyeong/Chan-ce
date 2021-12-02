@@ -39,6 +39,8 @@ class ReceiptActivity :AppCompatActivity(){
         var totalCost = intent.getStringExtra("total cost").toString()
         binding.btnTotal.setText(totalCost)
 
+        binding.btnWeek.setText(intent.getStringExtra("week"))
+
         var mon = intent.getStringExtra("mon").toString()
         var tue = intent.getStringExtra("tue").toString()
         var wed = intent.getStringExtra("wed").toString()
@@ -69,6 +71,7 @@ class ReceiptActivity :AppCompatActivity(){
             }else{
                 val intent = Intent(this, AccountActivity::class.java).apply {
                     putExtra("total cost",totalCost.toString())
+
 
                     val uid = uid.toString()
                     myRef.child(uid).setValue(User(store, totalCost))
