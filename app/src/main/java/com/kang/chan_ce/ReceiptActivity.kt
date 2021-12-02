@@ -28,18 +28,108 @@ class ReceiptActivity :AppCompatActivity(){
         val myRef = database.getReference()
 
         binding.storeName.setText(intent.getStringExtra("storeName"))
-        binding.txtmenu.setText(intent.getStringExtra("storeMenu"))
-        binding.txtmenu1.setText(intent.getStringExtra("storeMenu1"))
-        binding.txtmenu2.setText(intent.getStringExtra("storeMenu2"))
 
-        binding.numKimchi.setText(intent.getStringExtra("kimchi").toString())
-        binding.numJinMiChae.setText(intent.getStringExtra("jinmichae").toString())
-        binding.numMuMaLangE.setText(intent.getStringExtra("mumalange").toString())
+        val menu = intent.getStringExtra("storeMenu")
+        val menu1 = intent.getStringExtra("storeMenu1")
+        val menu2 = intent.getStringExtra("storeMenu2")
+
+        val nmenu = intent.getStringExtra("kimchi").toString()
+        val nmenu1 = intent.getStringExtra("jinmichae").toString()
+        val nmenu2 = intent.getStringExtra("mumalange").toString()
+
+        var allmenu : String
+
+        if(nmenu != "0" && nmenu1 != "0" && nmenu2 != "0"){
+            binding.txtmenu.setText(menu)
+            binding.txtmenu1.setText(menu1)
+            binding.txtmenu2.setText(menu2)
+
+            binding.numKimchi.setText(nmenu)
+            binding.numJinMiChae.setText(nmenu1)
+            binding.numMuMaLangE.setText(nmenu2)
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }else if(nmenu != "0" && nmenu1 != "0" && nmenu2 == "0"){
+            binding.txtmenu.setText(menu)
+            binding.txtmenu1.setText(menu1)
+            binding.txtmenu2.setText("")
+
+            binding.numKimchi.setText(nmenu)
+            binding.numJinMiChae.setText(nmenu1)
+            binding.numMuMaLangE.setText("")
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+
+        }else if(nmenu != "0" && nmenu1 == "0" && nmenu2 != "0"){
+            binding.txtmenu.setText(menu)
+            binding.txtmenu1.setText(menu2)
+            binding.txtmenu2.setText("")
+
+            binding.numKimchi.setText(nmenu)
+            binding.numJinMiChae.setText(nmenu2)
+            binding.numMuMaLangE.setText("")
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }else if(nmenu == "0" && nmenu1 != "0" && nmenu2 != "0"){
+            binding.txtmenu.setText(menu1)
+            binding.txtmenu1.setText(menu2)
+            binding.txtmenu2.setText("")
+
+            binding.numKimchi.setText(nmenu1)
+            binding.numJinMiChae.setText(nmenu2)
+            binding.numMuMaLangE.setText("")
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }else if(nmenu == "0" && nmenu1 == "0" && nmenu2 != "0"){
+            binding.txtmenu.setText(menu2)
+            binding.txtmenu1.setText("")
+            binding.txtmenu2.setText("")
+
+            binding.numKimchi.setText(nmenu2)
+            binding.numJinMiChae.setText("")
+            binding.numMuMaLangE.setText("")
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }else if(nmenu == "0" && nmenu1 != "0" && nmenu2 == "0"){
+            binding.txtmenu.setText(menu1)
+            binding.txtmenu1.setText("")
+            binding.txtmenu2.setText("")
+
+            binding.numKimchi.setText(nmenu1)
+            binding.numJinMiChae.setText("")
+            binding.numMuMaLangE.setText("")
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }else if(nmenu != "0" && nmenu1 == "0" && nmenu2 == "0"){
+            binding.txtmenu.setText(menu)
+            binding.txtmenu1.setText("")
+            binding.txtmenu2.setText("")
+
+            binding.numKimchi.setText(nmenu)
+            binding.numJinMiChae.setText("")
+            binding.numMuMaLangE.setText("")
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }else{
+            //set 0,,,? maybe
+            binding.txtmenu.setText(menu)
+            binding.txtmenu1.setText(menu1)
+            binding.txtmenu2.setText(menu2)
+
+            binding.numKimchi.setText(nmenu)
+            binding.numJinMiChae.setText(nmenu1)
+            binding.numMuMaLangE.setText(nmenu2)
+
+            allmenu = "$menu X$nmenu / $menu1 X$nmenu1 / $menu2 X$nmenu2"
+        }
+
+
 
         var totalCost = intent.getStringExtra("total cost").toString()
         binding.btnTotal.setText(totalCost)
 
-        binding.btnWeek.setText(intent.getStringExtra("week"))
+        var week = intent.getStringExtra("week")
+        binding.btnWeek.setText(week)
 
         var mon = intent.getStringExtra("mon").toString()
         var tue = intent.getStringExtra("tue").toString()
@@ -72,9 +162,8 @@ class ReceiptActivity :AppCompatActivity(){
                 val intent = Intent(this, AccountActivity::class.java).apply {
                     putExtra("total cost",totalCost.toString())
 
-
                     val uid = uid.toString()
-                    myRef.child(uid).setValue(User(store, totalCost))
+                    myRef.child(uid).setValue(User(store, week, days, totalCost, allmenu))
                 }
                 startActivity(intent)
             }
