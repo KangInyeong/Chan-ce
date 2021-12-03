@@ -23,6 +23,23 @@ import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity() {
 
+/*    private fun getAppKeyHash() {
+        try {
+            val info = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
+            for (signature in info.signatures) {
+                var md: MessageDigest
+                md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                val something = String(Base64.encode(md.digest(), 0))
+                Log.e("Hash key", something)
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.e("name not found", e.toString())
+        } catch (e: NoSuchAlgorithmException) {
+            e.printStackTrace()
+        }
+    }*/
+
 
     private val num_page = 4
 
@@ -30,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+/*        getAppKeyHash()*/
 
         val username = intent.getStringExtra("username").toString()
 
