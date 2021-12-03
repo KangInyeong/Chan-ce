@@ -325,9 +325,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Already be deposited"
+                android:text="Not yet be deposited"
                 android:textAlignment="center"
-                android:textColor="#67A7D6"
+                android:textColor="@color/gray1"
                 android:fontFamily="@font/bold"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"/>
