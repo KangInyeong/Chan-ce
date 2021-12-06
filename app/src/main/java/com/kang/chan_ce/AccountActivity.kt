@@ -26,6 +26,8 @@ class AccountActivity :AppCompatActivity(){
             if (username != null) {
                 username = email_list!![0]
             }
+        }else if(username == null){
+            username = "kiyoog02"
         }
 
         binding.userName.setText(username)

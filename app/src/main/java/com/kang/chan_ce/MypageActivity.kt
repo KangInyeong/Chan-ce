@@ -3,6 +3,7 @@ package com.kang.chan_ce
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.kang.chan_ce.databinding.ActivityMypageBinding
 import android.widget.Button
 import android.widget.Toast
@@ -39,9 +40,12 @@ class MypageActivity : AppCompatActivity() {
             if (username != null) {
                 username = email_list!![0]
             }
+        }else if(username == null){
+            username = "kiyoog02"
         }
+        Log.e("이메일 로그인", "$useremail $username")
 
-        binding.userName.setText(username)
+        binding.userName.text = username
 
         var store :String = ""
 

@@ -42,4 +42,9 @@ class ScanActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MypageActivity::class.java))
+        finish()
+    }
 }

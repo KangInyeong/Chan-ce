@@ -11,11 +11,12 @@ import com.google.android.material.internal.ContextUtils.getActivity
 import com.kang.chan_ce.databinding.ActivityMainBinding
 import me.relex.circleindicator.CircleIndicator3
 import android.content.pm.PackageManager
-
 import android.content.pm.PackageInfo
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import net.daum.mf.map.api.MapView
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -40,6 +41,12 @@ class MainActivity : AppCompatActivity() {
         }
     }*/
 
+    val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val useremail = user?.email
+    val uid = user?.uid
+    val userid = uid.toString()
+
+    var username = user?.displayName
 
     private val num_page = 4
 
@@ -48,9 +55,17 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        if(username == ""){
+            val email_list = useremail?.split("@")
+            if (username != null) {
+                username = email_list!![0]
+            }
+        }
+
+
 /*        getAppKeyHash()*/
 
-        val username = intent.getStringExtra("username").toString()
 
         // 가로스와이프 광고 배너 view fragment
         var mPager = binding.viewPagerAdbanner
@@ -87,7 +102,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnMyPage.setOnClickListener {
 //            Toast.makeText( this, "login $username", Toast.LENGTH_SHORT ).show()
-            val intent = Intent(this, MypageActivity::class.java)
+            val intent = Intent(this, MypageActivity::class.java).apply {
+                putExtra("name", username)
+            }
             startActivity(intent)
         }
 
