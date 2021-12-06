@@ -26,16 +26,9 @@ class QrActivity : AppCompatActivity() {
         binding = ActivityQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var username = intent.getStringExtra("name").toString()
+        var username = intent.getStringExtra("userName").toString()
 
-        if(username == ""){
-            username = "kiyoog02"
-            qrtext.setText("This is kiyoog02's QR code.")
-        }else if(username == null){
-            username = "kiyoog02"
-
-        }
-        qrtext.setText("This is kiyoog02's QR code.")
+        qrtext.setText("This is ${username}'s QR code.")
 
 
 

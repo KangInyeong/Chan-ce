@@ -11,12 +11,14 @@ import com.google.android.material.internal.ContextUtils.getActivity
 import com.kang.chan_ce.databinding.ActivityMainBinding
 import me.relex.circleindicator.CircleIndicator3
 import android.content.pm.PackageManager
+
 import android.content.pm.PackageInfo
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import net.daum.mf.map.api.MapView
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -55,17 +57,19 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+/*        getAppKeyHash()*/
 
-        if(username == ""){
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference()
+
+        if(username == ""||username == null){
             val email_list = useremail?.split("@")
             if (username != null) {
                 username = email_list!![0]
             }
         }
 
-
-/*        getAppKeyHash()*/
-
+//        val username = intent.getStringExtra("username").toString() //이게 왜 안되냐구 ㅠ
 
         // 가로스와이프 광고 배너 view fragment
         var mPager = binding.viewPagerAdbanner
@@ -103,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnMyPage.setOnClickListener {
 //            Toast.makeText( this, "login $username", Toast.LENGTH_SHORT ).show()
             val intent = Intent(this, MypageActivity::class.java).apply {
-                putExtra("name", username)
+                putExtra("userName", username)
             }
             startActivity(intent)
         }

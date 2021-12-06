@@ -1,5 +1,6 @@
 package com.kang.chan_ce
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.kang.chan_ce.databinding.ActivityReceiptBinding
 import com.kang.chan_ce.databinding.ActivityStoreDetailBinding
+import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_receipt.*
 
 class ReceiptActivity :AppCompatActivity(){
@@ -26,6 +28,16 @@ class ReceiptActivity :AppCompatActivity(){
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference()
+
+        val useremail = user?.email
+        var username = user?.displayName
+
+        if(username == ""||username == null){
+            val email_list = useremail?.split("@")
+            if (username != null) {
+                username = email_list!![0]
+            }
+        }
 
         binding.storeName.setText(intent.getStringExtra("storeName"))
 
@@ -163,7 +175,17 @@ class ReceiptActivity :AppCompatActivity(){
                     putExtra("total cost",totalCost.toString())
 
                     val uid = uid.toString()
-                    myRef.child(uid).setValue(User(store, week, days, totalCost, allmenu))
+                    var name = username
+
+//                    myRef.child(uid).child("userName").get().addOnSuccessListener {
+//
+//                        Log.i("firebase", "Got value ${it.value}")
+//                        name = "${it.value}"
+//                    }.addOnFailureListener{
+//                        Log.e("firebase", "Error getting data", it)
+//                    }
+
+                    myRef.child(uid).setValue(User(name, store, week, days, totalCost, allmenu))
                 }
                 startActivity(intent)
             }

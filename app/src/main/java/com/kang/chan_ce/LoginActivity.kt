@@ -29,14 +29,6 @@ class LoginActivity : AppCompatActivity() {
     private var googleSignInClient : GoogleSignInClient? = null // google 로그인 연동 변수
     private var GOOGLE_LOGIN_CODE = 9001 //임의로 설정 가능
 
-    val db = Firebase.firestore
-
-    val user = hashMapOf(
-        "uid" to "1234",
-        "email" to "kiyoog02@naver.com",
-        "pw" to "dlsdud",
-        "name" to "Inyeong"
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
