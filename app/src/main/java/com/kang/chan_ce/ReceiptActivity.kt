@@ -1,6 +1,6 @@
 package com.kang.chan_ce
 
-import android.content.Context
+import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.kang.chan_ce.databinding.ActivityReceiptBinding
-import com.kang.chan_ce.databinding.ActivityStoreDetailBinding
 import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_receipt.*
 
@@ -24,7 +23,7 @@ class ReceiptActivity :AppCompatActivity(){
         setContentView(binding.root)
 
         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-        val uid = user?.uid
+        val uid = user?.uid.toString()
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference()
@@ -32,7 +31,7 @@ class ReceiptActivity :AppCompatActivity(){
         val useremail = user?.email
         var username = user?.displayName
 
-        if(username == ""||username == null){
+        if(username == "" || username == null ){
             val email_list = useremail?.split("@")
             if (username != null) {
                 username = email_list!![0]
@@ -165,17 +164,35 @@ class ReceiptActivity :AppCompatActivity(){
 
         val store = intent.getStringExtra("storeName")
 
-        var check = false
+
+        btnCheckBox.isChecked = false
+
+        btnCheckBox.setOnClickListener{
+            AlertDialog.Builder(this)
+                .setTitle("Agreement")
+                .setMessage("Are you sure this receipt's information?")
+                .setPositiveButton("Sure", DialogInterface.OnClickListener { dialog, which ->
+                    Toast.makeText(this, "Complete Agreement", Toast.LENGTH_SHORT).show()
+                    btnCheckBox.isChecked = true
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+                    Toast.makeText(this, "Not Agreement", Toast.LENGTH_SHORT).show()
+                    btnCheckBox.isChecked = false
+                })
+                .show()
+        }
+
+        var name = username
 
         binding.btnDone.setOnClickListener {
-            if(!check){
+            if (!btnCheckBox.isChecked) {
                 Toast.makeText(this, "You have to check the agreement!", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 val intent = Intent(this, AccountActivity::class.java).apply {
-                    putExtra("total cost",totalCost.toString())
+                    putExtra("total cost", totalCost.toString())
+                    putExtra("userName", name)
 
-                    val uid = uid.toString()
-                    var name = username
+
 
 //                    myRef.child(uid).child("userName").get().addOnSuccessListener {
 //
@@ -185,27 +202,38 @@ class ReceiptActivity :AppCompatActivity(){
 //                        Log.e("firebase", "Error getting data", it)
 //                    }
 
-                    myRef.child(uid).setValue(User(name, store, week, days, totalCost, allmenu))
+                    //1차시도
+                    //myRef.child(uid).setValue(User(name, store, week, days, totalCost, allmenu))
+
+                    //2차시도
+//                    val key = myRef.child(uid).push().key
+//                    if (key == null) {
+//                        Log.w(TAG, "Couldn't get push key for posts")
+//                        return@apply
+//                    }
+//
+//                    val post = User(name, store, week, days, totalCost, allmenu)
+//
+//                    val childUpdates = hashMapOf<String, Any>(
+////                        "/posts/$key" to post,
+//                        "/user-posts/$uid/$key" to post
+//                    )
+//
+//                    myRef.updateChildren(childUpdates)
+
+                    val key = myRef.child(uid).push().key
+                    if (key != null) {
+                        myRef.child(uid).child(key)
+                            .setValue(User(name, store, week, days, totalCost, allmenu))
+                    }
+
                 }
                 startActivity(intent)
             }
 
         }
 
-        btnCheckBox.setOnClickListener{
-            AlertDialog.Builder(this)
-                .setTitle("Agreement")
-                .setMessage("Are you sure this receipt's information?")
-                .setPositiveButton("Sure", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "Complete Agreement", Toast.LENGTH_SHORT).show()
-                    check = true
-                })
-                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(this, "Not Agreement", Toast.LENGTH_SHORT).show()
-                    check = false
-                })
-                .show()
-        }
+
 
 
         binding.btnBack.setOnClickListener{

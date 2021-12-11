@@ -20,21 +20,22 @@ class AccountActivity :AppCompatActivity(){
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference()
 
-        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-        val uid = user?.uid
-        val useremail = user?.email
+//        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+//        val uid = user?.uid
+//        val useremail = user?.email
+//
+//        var username = user?.displayName
+//
+//        if (uid != null) {
+//            myRef.child(uid).child("userName").get().addOnSuccessListener {
+//                binding.userName.setText("${it.value}")
+//
+//            }.addOnFailureListener{
+//                Log.e("firebase", "Error getting data", it)
+//            }
+//        }
 
-        var username = user?.displayName
-
-        if (uid != null) {
-            myRef.child(uid).child("userName").get().addOnSuccessListener {
-                binding.userName.setText("${it.value}")
-
-            }.addOnFailureListener{
-                Log.e("firebase", "Error getting data", it)
-            }
-        }
-
+        binding.userName.setText(intent.getStringExtra("userName").toString())
 
 
         binding.btnTotal.setText(intent.getStringExtra("total cost").toString())
