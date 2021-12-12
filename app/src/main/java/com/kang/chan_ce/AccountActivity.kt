@@ -3,12 +3,15 @@ package com.kang.chan_ce
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.kang.chan_ce.databinding.ActivityAccountBinding
 import com.kang.chan_ce.databinding.ActivitySearchBinding
+import kotlinx.android.synthetic.main.activity_account.*
 
 class AccountActivity :AppCompatActivity(){
 
@@ -39,6 +42,9 @@ class AccountActivity :AppCompatActivity(){
 
 
         binding.btnTotal.setText(intent.getStringExtra("total cost").toString())
+
+        //여기서는 뒤로가기가 안되어야할듯
+        btnBack.visibility = View.INVISIBLE
 
         binding.btnBackMainPage.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

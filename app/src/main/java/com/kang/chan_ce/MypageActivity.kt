@@ -64,7 +64,14 @@ class MypageActivity : AppCompatActivity() {
         binding.txtdeposit.setVisibility(View.INVISIBLE)
         binding.txtone.setVisibility(View.INVISIBLE)
 
+        binding.txtStore1.setText("Please subscription!")
+        binding.txtweek1.setText("")
+        binding.btnMore1.setVisibility(View.INVISIBLE)
+        binding.txtdeposit1.setVisibility(View.INVISIBLE)
+        binding.txtone1.setVisibility(View.INVISIBLE)
+
         var store :String = ""
+        var store1 :String = ""
 
         val keyList = mutableListOf<String>()
         val userList = mutableListOf<User>()
@@ -85,8 +92,9 @@ class MypageActivity : AppCompatActivity() {
                     }
 
                     size = userList.size
+                    Log.e("정보","$userList")
 
-                    if(size >= 2){
+                    if(size == 2){
                         store = userList[size-1].storeName.toString()
                         if(store != null && store != "" && store != "null"){
                             binding.txtStore.text = store
@@ -104,6 +112,42 @@ class MypageActivity : AppCompatActivity() {
                         }else{
                             binding.txtweek.setText("")
                         }
+                    }else if(size >= 3){
+                        store = userList[size-1].storeName.toString()
+                        if(store != null && store != "" && store != "null"){
+                            binding.txtStore.text = store
+                            binding.btnMore.setVisibility(View.VISIBLE)
+                            binding.txtdeposit.setVisibility(View.VISIBLE)
+                            binding.txtone.setVisibility(View.VISIBLE)
+                        }
+
+                        val value2 = userList[size-1].subWeek.toString()
+                        if (value2 != null && value2 != "" && value2 != "null"){
+                            binding.txtweek.text = value2
+                            binding.btnMore.setVisibility(View.VISIBLE)
+                            binding.txtdeposit.setVisibility(View.VISIBLE)
+                            binding.txtone.setVisibility(View.VISIBLE)
+                        }else{
+                            binding.txtweek.setText("")
+                        }
+
+                        store1 = userList[size-2].storeName.toString()
+                        if(store1 != null && store1 != "" && store1 != "null"){
+                            binding.txtStore1.text = store1
+                            binding.btnMore1.setVisibility(View.VISIBLE)
+                            binding.txtdeposit1.setVisibility(View.VISIBLE)
+                            binding.txtone1.setVisibility(View.VISIBLE)
+                        }
+
+                        val value1 = userList[size-2].subWeek.toString()
+                        if (value1 != null && value1 != "" && value1 != "null"){
+                            binding.txtweek1.text = value1
+                            binding.btnMore1.setVisibility(View.VISIBLE)
+                            binding.txtdeposit1.setVisibility(View.VISIBLE)
+                            binding.txtone1.setVisibility(View.VISIBLE)
+                        }else{
+                            binding.txtweek1.setText("")
+                        }
                     }
                     }
 
@@ -112,23 +156,25 @@ class MypageActivity : AppCompatActivity() {
                     binding.btnMore.setVisibility(View.VISIBLE)
                     binding.txtdeposit.setVisibility(View.VISIBLE)
                     binding.txtone.setVisibility(View.VISIBLE)
-
-
                     binding.txtweek.text = " "
                     binding.btnMore.setVisibility(View.VISIBLE)
                     binding.txtdeposit.setVisibility(View.VISIBLE)
                     binding.txtone.setVisibility(View.VISIBLE)
+
+                    binding.txtStore1.text = " "
+                    binding.btnMore1.setVisibility(View.VISIBLE)
+                    binding.txtdeposit1.setVisibility(View.VISIBLE)
+                    binding.txtone1.setVisibility(View.VISIBLE)
+                    binding.txtweek1.text = " "
+                    binding.btnMore1.setVisibility(View.VISIBLE)
+                    binding.txtdeposit1.setVisibility(View.VISIBLE)
+                    binding.txtone1.setVisibility(View.VISIBLE)
 
 
 
                 }
             })
         }
-
-
-
-
-
 
 
 
@@ -188,13 +234,21 @@ class MypageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        binding.btnMore1.setOnClickListener {
-//            val intent = Intent(this, MoreActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.btnMore1.setOnClickListener {
+            val intent = Intent(this, MoreActivity::class.java).apply {
+                putExtra("storeName", userList[2].storeName)
+                putExtra("infokey",keyList[size-3])
+            }
+            startActivity(intent)
+        }
 
         binding.btnMainPage.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnPast.setOnClickListener {
+            val intent = Intent(this, SeemoreActivity::class.java)
             startActivity(intent)
         }
 

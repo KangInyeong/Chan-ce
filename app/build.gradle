@@ -81,5 +81,8 @@ dependencies {
 
     implementation files('libs/libDaumMapAndroid.jar')
 
+    //캘린더뷰 패키지
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+
 
 }
