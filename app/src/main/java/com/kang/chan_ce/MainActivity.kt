@@ -34,6 +34,7 @@ import android.widget.CalendarView
 import android.widget.TextView
 import androidx.core.net.ParseException
 import com.github.sundeepk.compactcalendarview.CompactCalendarView.CompactCalendarViewListener
+import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     private val dateFormatForDisplaying: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
     private val dateFormatForMonth: SimpleDateFormat = SimpleDateFormat("yyyy년 MM월", Locale.KOREA)
     private val dateFormatForMonth2: SimpleDateFormat = SimpleDateFormat("yyyy-MM", Locale.KOREA)
+
+    private lateinit var database : DatabaseReference
 
 /*    private fun getAppKeyHash() {
         try {
@@ -61,12 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
     }*/
 
-    val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    val useremail = user?.email
-    val uid = user?.uid
-    val userid = uid.toString()
-
-    var username = user?.displayName
+    private val usertype = "google"
 
     private val num_page = 4
 
@@ -74,6 +72,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
+        val uid = user?.uid
+        var userName : String =""
+
+        database = FirebaseDatabase.getInstance().getReference("Users")
+
+        if(usertype == "google"){
+            if (uid != null) {
+                database.child(uid).child("userName").get().addOnSuccessListener {
+                    userName = it.value as String
+                }
+            }
+        }else {
+            intent.getStringExtra("userName")
+        }
 
         val compactCalendarView = calendar_view
 
@@ -139,18 +154,6 @@ class MainActivity : AppCompatActivity() {
 
 /*        getAppKeyHash()*/
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference()
-
-        if(username == ""||username == null){
-            val email_list = useremail?.split("@")
-            if (username != null) {
-                username = email_list!![0]
-            }
-        }
-
-//        val username = intent.getStringExtra("username").toString() //이게 왜 안되냐구 ㅠ
-
         // 가로스와이프 광고 배너 view fragment
         var mPager = binding.viewPagerAdbanner
         var pagerAdapter = AdAdapter(this,num_page)
@@ -185,10 +188,8 @@ class MainActivity : AppCompatActivity() {
          })
 
         binding.btnMyPage.setOnClickListener {
-//            Toast.makeText( this, "login $username", Toast.LENGTH_SHORT ).show()
-            val intent = Intent(this, MypageActivity::class.java).apply {
-                putExtra("userName", username)
-            }
+//            Toast.makeText( this, "login $userName", Toast.LENGTH_SHORT ).show()
+            val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
 

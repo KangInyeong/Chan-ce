@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
     private var googleSignInClient : GoogleSignInClient? = null // google 로그인 연동 변수
     private var GOOGLE_LOGIN_CODE = 9001 //임의로 설정 가능
 
+    private lateinit var database : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance() // firebase의 authentication
+
 
         binding.btnGoogle.setOnClickListener {
             googleLogin()
@@ -100,6 +104,26 @@ class LoginActivity : AppCompatActivity() {
                     task ->
                 if(task.isSuccessful){
                     // Sign in success,
+
+                    val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+                    moveMainPage(task.result?.user)
+
+                    val userName = user?.displayName.toString()
+                    val uid = user?.uid
+                    val userEmail = user?.email
+                    val ulocation = ""
+                    val userType = "google"
+
+
+                    database = FirebaseDatabase.getInstance().getReference("Users")
+
+                    val userdata = UserData(userType, userName, uid, userEmail, ulocation)
+
+                    if (uid != null) {
+                        database.child(uid).setValue(userdata)
+                    }
+
+
                     moveMainPage(task.result?.user)
                 }else{
                     // If sign in fails,
@@ -129,7 +153,10 @@ class LoginActivity : AppCompatActivity() {
     // Call MainActivity & pass user info
     private fun moveMainPage(user: FirebaseUser?){
         if( user!= null){
-            startActivity(Intent(this,MainActivity::class.java))
+            intent = Intent(this,MainActivity::class.java).apply {
+                putExtra("userType", "google")
+            }
+            startActivity(intent)
             finish()
         }
     }

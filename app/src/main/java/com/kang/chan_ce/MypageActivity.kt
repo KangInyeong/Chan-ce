@@ -1,35 +1,21 @@
 package com.kang.chan_ce
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
 import com.kang.chan_ce.databinding.ActivityMypageBinding
-import android.widget.Button
 import android.widget.Toast
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.database.ChildEventListener
-import kotlinx.android.synthetic.main.activity_mypage.*
-import org.w3c.dom.Comment
 import com.google.firebase.database.DatabaseError
-
-import androidx.annotation.NonNull
-
-import android.text.format.DateUtils.isToday
 
 import com.google.firebase.database.DataSnapshot
 
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import com.google.protobuf.Value
 
 
 class MypageActivity : AppCompatActivity() {
@@ -43,21 +29,23 @@ class MypageActivity : AppCompatActivity() {
         val myRef = database.reference
 
         val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-        val useremail = user?.email
-        val uid = user?.uid
-        val userid = uid.toString()
-        var username = user?.displayName
 
-        if(username == ""||username == null){
-            val email_list = useremail?.split("@")
-            if (username != null) {
-                username = email_list!![0]
+        val userid = user?.uid.toString()
+
+        val uid = user?.uid
+        var userName : String =""
+
+        val udatabase = database.getReference("Users")
+
+        if (uid != null) {
+            udatabase.child(uid).child("userName").get().addOnSuccessListener {
+                userName = it.value as String
+                binding.userName.text = userName
             }
         }
 
         var size = 0
 
-        binding.userName.setText(username)
         binding.txtStore.setText("Please subscription!")
         binding.txtweek.setText("")
         binding.btnMore.setVisibility(View.INVISIBLE)
@@ -74,8 +62,8 @@ class MypageActivity : AppCompatActivity() {
         var store1 :String = ""
 
         val keyList = mutableListOf<String>()
-        val userList = mutableListOf<User>()
-        userList.add(User("none","none","none","none","none","none"))
+        val userList = mutableListOf<Reserv>()
+        userList.add(Reserv("none","none","none","none","none","none"))
 
 
         myRef.child(userid).get().addOnSuccessListener {
@@ -85,7 +73,7 @@ class MypageActivity : AppCompatActivity() {
                         Log.e("정보", "$snapshot")
                         var key = snapshot.key.toString()
                         keyList.add(key)
-                        var user = snapshot.getValue<User>()
+                        var user = snapshot.getValue<Reserv>()
                         if (user != null) {
                             userList.add(user)
                         }
@@ -207,21 +195,20 @@ class MypageActivity : AppCompatActivity() {
 //        }
 
         binding.btnMainPage.setOnClickListener {
-            Toast.makeText(this,"$userid // $useremail // $userid", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnQr1.setOnClickListener {
             val intent = Intent(this, QrActivity::class.java).apply {
-                putExtra("userName", username)
+                putExtra("userName", userName)
             }
             startActivity(intent)
         }
 
         binding.btnQr2.setOnClickListener {
             val intent = Intent(this, ScanActivity::class.java).apply {
-                putExtra("userName", username)
+                putExtra("userName", userName)
             }
             startActivity(intent)
         }
