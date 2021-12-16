@@ -32,7 +32,10 @@ class StoreDetailActivity: AppCompatActivity() {
 
         //map view
 
+/*        val mapView = MapView(this)
+=======
         val mapView = MapView(this)
+>>>>>>> ec1a745452f16d74deecbad421973345fcd44084
         binding.mapView.addView(mapView)
 
 
@@ -57,11 +60,9 @@ class StoreDetailActivity: AppCompatActivity() {
         //marker.setTag(0);
         marker.mapPoint = mapPoint
         marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
+        marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
 
-        marker.selectedMarkerType =
-            MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-
-        mapView.addPOIItem(marker)
+        mapView.addPOIItem(marker)*/
 
 
         val url = intent.getStringExtra("StoreImage")

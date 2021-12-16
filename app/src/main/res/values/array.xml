@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="date">
-        <item> "Select A Week" </item>
-        <item> "Nov 22nd ~ Nov 28th" </item>
-        <item> "Nov 29th ~ Dec 5th" </item>
-        <item> "Dec 6th ~ Dec 12nd" </item>
+        <item> "Select A Period </item>
+        <item> "2021-12-06 ~ 2021-12-12" </item>
+        <item> "2021-12-13 ~ 2021-12-19" </item>
+        <item> "2021-12-20 ~ 2021-12-26" </item>
     </string-array>
 </resources>
