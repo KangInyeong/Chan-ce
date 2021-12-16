@@ -33,6 +33,9 @@ class StoreDetailActivity: AppCompatActivity() {
         //map view
 
 /*        val mapView = MapView(this)
+=======
+        val mapView = MapView(this)
+>>>>>>> ec1a745452f16d74deecbad421973345fcd44084
         binding.mapView.addView(mapView)
 
 

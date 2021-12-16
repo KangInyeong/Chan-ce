@@ -21,6 +21,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import android.widget.EditText
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.auth.User
 import com.kang.chan_ce.databinding.ActivitySignupBinding
 import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -35,6 +38,8 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
 
+    private lateinit var database : DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,16 +49,15 @@ class SignupActivity : AppCompatActivity() {
 
         createAccountInputsArray = arrayOf(binding.editEmail, binding.editPw, binding.editPw2)
 
-/*        namebtn.setOnClickListener {
-
-        }*/
 
 
         //가입
         binding.btnSignup.setOnClickListener {
+
             userName = binding.editName.text.toString().trim()
+
             Intent(this, MainActivity::class.java).apply {
-                putExtra("username",userName)
+                putExtra("username",userName) //왜 안돼????
             }
             signIn()
             startActivity(intent)
@@ -102,14 +106,31 @@ class SignupActivity : AppCompatActivity() {
 
             userEmail = binding.editEmail.text.toString().trim()
             userPassword = binding.editPw.text.toString().trim()
+            userName = binding.editName.text.toString()
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "account sucessfully created", Toast.LENGTH_SHORT)
+//                        Toast.makeText(this, "account sucessfully created", Toast.LENGTH_SHORT)
+
+                        database = FirebaseDatabase.getInstance().getReference("Users")
+                        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+                        val uid = user?.uid
+                        val ulocation = ""
+                        val userType = "email"
+                        val userdata = UserData(userType, userName, uid, userEmail, ulocation)
+                        if (uid != null) {
+                            database.child(uid).setValue(userdata)
+                        }
+
+                        Toast.makeText(this, "Wellcome $userName", Toast.LENGTH_SHORT)
                             .show()
                         sendEmailVerification()
-                        startActivity(Intent(this, MainActivity::class.java))
+                        Intent(this, MainActivity::class.java).apply {
+                            putExtra("userName",userName)
+                            putExtra("usersType",userType)
+                        }
+                        startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, "fail to authentic", Toast.LENGTH_SHORT).show()

@@ -81,13 +81,68 @@
                     android:layout_margin="10dp"
                     android:text="This month's Chan:ce calendar"/>-->
 
-
-            <CalendarView
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView_month"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center" />
+                android:layout_height="50dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="Month" />
+
+            <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                android:id="@+id/calendar_view"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:compactCalendarTextSize="12sp"
+                app:compactCalendarTargetHeight="300dp" />
+
+            <TextView
+                android:id="@+id/textView_result"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="클릭한 날짜 정보" />
+
+            <Button
+                android:id="@+id/button_add_events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="화면에 보이는 달의 1일, 2일에 이벤트 추가"
+                android:layout_marginBottom="60dp"/>
+
+            <!--            <Button-->
+            <!--                android:id="@+id/button_remove_events"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="모든 이벤트 제거" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/button_get_event"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="보이는 달의 1일 이벤트 정보 가져오기" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/textView_result2"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:background="#ffe95451"-->
+            <!--                android:textColor="#fff"-->
+            <!--                android:gravity="center"-->
+            <!--                android:text="가져온 날짜 정보"-->
+            <!--                android:layout_marginBottom="50dp"/>-->
+
+            <!--            <CalendarView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="300dp"-->
+            <!--                android:layout_marginTop="30dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:layout_gravity="center" />-->
 
         </LinearLayout>
 

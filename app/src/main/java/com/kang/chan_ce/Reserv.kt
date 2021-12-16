@@ -1,6 +1,7 @@
 package com.kang.chan_ce
 
-data class User (
+data class Reserv (
+    val userName : String? = null,
     val storeName : String? = null,
     val subWeek : String ?= null,
     val pickDay : String ?= null,

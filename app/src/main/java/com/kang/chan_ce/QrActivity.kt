@@ -14,6 +14,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.kang.chan_ce.databinding.ActivityMypageBinding
 import com.kang.chan_ce.databinding.ActivityQrBinding
 import com.kang.chan_ce.databinding.ActivitySignupBinding
+import kotlinx.android.synthetic.main.activity_qr.*
 
 class QrActivity : AppCompatActivity() {
 
@@ -24,6 +25,12 @@ class QrActivity : AppCompatActivity() {
 
         binding = ActivityQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var username = intent.getStringExtra("userName").toString()
+
+        qrtext.setText("This is ${username}'s QR code.")
+
+
 
         binding.btnCreate.setOnClickListener {
 

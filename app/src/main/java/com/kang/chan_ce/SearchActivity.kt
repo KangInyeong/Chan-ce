@@ -6,6 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +20,7 @@ import kotlinx.android.synthetic.main.item.view.*
 class SearchActivity:AppCompatActivity() {
 
     var firestore : FirebaseFirestore? = null
+    var adapter: RecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +28,23 @@ class SearchActivity:AppCompatActivity() {
 
         firestore = FirebaseFirestore.getInstance()
 
-        recyclerview.adapter = RecyclerViewAdapter()
+        adapter = RecyclerViewAdapter()
+
+        recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(this)
+
+        searchview.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                //Toast.makeText(this, "입력하고있는 단어 = $query", Toast.LENGTH_LONG).show()
+                adapter!!.filter.filter(query)
+                return false
+            }
+
+        })
         
         btnBack.setOnClickListener {
             finish()
@@ -33,11 +52,13 @@ class SearchActivity:AppCompatActivity() {
 
     }
 
-    inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
 
+        var storeFilteredList : ArrayList<StoreData> = arrayListOf()
         var storeList : ArrayList<StoreData> = arrayListOf()
 
         init {
+
             firestore?.collection("StoreList")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
 
                 storeList.clear()
@@ -47,9 +68,43 @@ class SearchActivity:AppCompatActivity() {
                     storeList.add(item!!)
                 }
 
+                storeFilteredList = storeList
+
                 notifyDataSetChanged()
             }
         }
+
+        override fun getFilter(): Filter {
+            return object : Filter() {
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    var list = storeList as ArrayList<StoreData>
+                    val charSearch = constraint.toString()
+                    if (charSearch.isEmpty()) {
+                        storeFilteredList = list
+                    } else {
+                        val resultList = ArrayList<StoreData>()
+                        for (row in list) {
+                            if (row != null) {
+                                if (row.storeName?.lowercase()?.contains(constraint.toString().lowercase()) == true) {
+                                    resultList.add(row)
+                                }
+                            }
+                        }
+                        storeFilteredList = resultList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = storeFilteredList
+                    return filterResults
+                }
+
+                override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                    storeFilteredList = results?.values as ArrayList<StoreData>
+                    notifyDataSetChanged()
+                }
+            }
+        }
+
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var view = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
@@ -62,55 +117,55 @@ class SearchActivity:AppCompatActivity() {
                 itemView.itemlayout.setOnClickListener {
 
                     val intent = Intent(view.context, StoreDetailActivity::class.java).apply {
-                        putExtra("x",storeList[position].ylatitude)
-                        putExtra("y",storeList[position].xlatitude)
-                        putExtra("StoreImage",storeList[position].storeImage)
-                        putExtra("StoreName",storeList[position].storeName)
-                        putExtra("StoreLocation",storeList[position].storeLocation)
-                        putExtra("StoreTime",storeList[position].storeTime)
-                        putExtra("StoreIntro",storeList[position].storeIntro)
-                        putExtra("StoreNum",storeList[position].storeNum)
+                        putExtra("x",storeFilteredList[position].ylatitude)
+                        putExtra("y",storeFilteredList[position].xlatitude)
+                        putExtra("StoreImage",storeFilteredList[position].storeImage)
+                        putExtra("StoreName",storeFilteredList[position].storeName)
+                        putExtra("StoreLocation",storeFilteredList[position].storeLocation)
+                        putExtra("StoreTime",storeFilteredList[position].storeTime)
+                        putExtra("StoreIntro",storeFilteredList[position].storeIntro)
+                        putExtra("StoreNum",storeFilteredList[position].storeNum)
                         putExtra("StoreMenu",
-                            storeList[position].storeMenu?.get(0)?.get("menuName")
+                            storeFilteredList[position].storeMenu?.get(0)?.get("menuName")
                         )
                         putExtra("menuImage",
-                            storeList[position].storeMenu?.get(0)?.get("menuImage")
+                            storeFilteredList[position].storeMenu?.get(0)?.get("menuImage")
                         )
                         putExtra("menuIntro",
-                            storeList[position].storeMenu?.get(0)?.get("menuIntro")
+                            storeFilteredList[position].storeMenu?.get(0)?.get("menuIntro")
                         )
                         putExtra("menuPrice",
-                            storeList[position].storeMenu?.get(0)?.get("menuPrice")
+                            storeFilteredList[position].storeMenu?.get(0)?.get("menuPrice")
                         )
 
                         putExtra("StoreMenu1",
-                            storeList[position].storeMenu?.get(1)?.get("menuName")
+                            storeFilteredList[position].storeMenu?.get(1)?.get("menuName")
                         )
                         putExtra("menuImage1",
-                            storeList[position].storeMenu?.get(1)?.get("menuImage")
+                            storeFilteredList[position].storeMenu?.get(1)?.get("menuImage")
                         )
                         putExtra("menuIntro1",
-                            storeList[position].storeMenu?.get(1)?.get("menuIntro")
+                            storeFilteredList[position].storeMenu?.get(1)?.get("menuIntro")
                         )
                         putExtra("menuPrice1",
-                            storeList[position].storeMenu?.get(1)?.get("menuPrice")
+                            storeFilteredList[position].storeMenu?.get(1)?.get("menuPrice")
                         )
 
                         putExtra("StoreMenu2",
-                            storeList[position].storeMenu?.get(2)?.get("menuName")
+                            storeFilteredList[position].storeMenu?.get(2)?.get("menuName")
                         )
                         putExtra("menuImage2",
-                            storeList[position].storeMenu?.get(2)?.get("menuImage")
+                            storeFilteredList[position].storeMenu?.get(2)?.get("menuImage")
                         )
                         putExtra("menuIntro2",
-                            storeList[position].storeMenu?.get(2)?.get("menuIntro")
+                            storeFilteredList[position].storeMenu?.get(2)?.get("menuIntro")
                         )
                         putExtra("menuPrice2",
-                            storeList[position].storeMenu?.get(2)?.get("menuPrice")
+                            storeFilteredList[position].storeMenu?.get(2)?.get("menuPrice")
                         )
-                        putExtra("x",storeList[position].xlatitude)
-                        putExtra("y",storeList[position].ylatitude)
-                        Log.e("위치다","${storeList[position].ylatitude}")
+                        putExtra("x",storeFilteredList[position].xlatitude)
+                        putExtra("y",storeFilteredList[position].ylatitude)
+                        Log.e("위치다","${storeFilteredList[position].ylatitude}")
 
                     }
                     startActivity(intent)
@@ -122,20 +177,23 @@ class SearchActivity:AppCompatActivity() {
 
         }
 
+
+
+
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             var viewHolder = (holder as ViewHolder).itemView
 
-            Glide.with(viewHolder.storeImage).load(storeList[position].storeImage).into(viewHolder.storeImage)
+            Glide.with(viewHolder.storeImage).load(storeFilteredList[position].storeImage).into(viewHolder.storeImage)
             //Log.e("안녕 여기 로그좀","$storeImage ${storeList[position].storeImage}")
 
-            viewHolder.storeName.text = storeList[position].storeName
-            viewHolder.storeLocation.text = storeList[position].storeLocation
-            viewHolder.storeTime.text = storeList[position].storeTime
+            viewHolder.storeName.text = storeFilteredList[position].storeName
+            viewHolder.storeLocation.text = storeFilteredList[position].storeLocation
+            viewHolder.storeTime.text = storeFilteredList[position].storeTime
 
         }
 
         override fun getItemCount(): Int {
-            return storeList.size
+            return storeFilteredList.size
         }
     }
 
