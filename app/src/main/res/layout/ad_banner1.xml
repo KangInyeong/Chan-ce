@@ -9,6 +9,6 @@
         android:layout_width="400dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_ad_banner1" />
+        android:src="@drawable/img_ad_banner4" />
 
 </LinearLayout>

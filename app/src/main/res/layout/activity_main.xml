@@ -51,12 +51,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center_horizontal">
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -82,13 +81,14 @@
                     android:text="This month's Chan:ce calendar"/>-->
 
             <TextView
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/textView_month"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                android:fontFamily="@font/medium"
                 android:gravity="center"
                 android:text="Month" />
 
@@ -96,6 +96,8 @@
                 android:id="@+id/calendar_view"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
+                app:compactCalendarCurrentSelectedDayBackgroundColor="@color/blue"
+                app:compactCalendarCurrentDayBackgroundColor="@color/gray"
                 app:compactCalendarTextSize="12sp"
                 app:compactCalendarTargetHeight="300dp" />
 
@@ -105,6 +107,7 @@
                 android:layout_height="50dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
+                android:fontFamily="@font/regular"
                 android:gravity="center"
                 android:text="클릭한 날짜 정보" />
 
@@ -114,6 +117,13 @@
                 android:layout_height="wrap_content"
                 android:text="화면에 보이는 달의 1일, 2일에 이벤트 추가"
                 android:layout_marginBottom="60dp"/>
+
+            <!--<ImageView
+                android:id="@+id/btnSubscribe"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_subscribe" />-->
 
             <!--            <Button-->
             <!--                android:id="@+id/button_remove_events"-->
@@ -148,12 +158,14 @@
 
     </ScrollView>
 
-    <ImageView
+    <Button
         android:id="@+id/btnSubscribe"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_subscribe" />
+        android:fontFamily="@font/bold"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:background="@color/blue"
+        android:text="subscribe now"/>
 
 </LinearLayout>

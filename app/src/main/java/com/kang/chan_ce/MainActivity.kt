@@ -128,8 +128,11 @@ class MainActivity : AppCompatActivity() {
             })
         }*/
 
+        //가져와야 하는 값 #1 구독 주
         var subWeek = mutableListOf<String>("2021-12-06 ~ 2021-12-12", "2021-12-06 ~ 2021-12-12", "2021-12-13 ~ 2021-12-19") // user의 구독 날짜
+        //가져와야 하는 값 #2 구독 요일
         var pickDay = mutableListOf<String>("THU FRI ", "MON THU SUN ", "WED SAT ")// user의 픽업 요일
+        //가져와야 하는 값 #3 사용자가 구독한 음식점 개수 (size로)
         var subNum = subWeek.size // 구독 음식점 개수
 
 
@@ -187,6 +190,7 @@ class MainActivity : AppCompatActivity() {
                             e.printStackTrace()
                         }
                         val time1 = trans_date1!!.time
+                        //가져와야 하는 값 #3 가게 이름
                         val ev1 = Event(Color.rgb(red,green,blue), time1, "상점이름")
                         compactCalendarView.addEvent(ev1)
                     }

@@ -417,12 +417,14 @@
 
     </ScrollView>
 
-    <ImageView
+    <Button
         android:id="@+id/btnSelect"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_select" />
+        android:fontFamily="@font/bold"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:background="@color/blue"
+        android:text="select"/>
 
 </LinearLayout>
