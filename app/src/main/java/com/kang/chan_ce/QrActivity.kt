@@ -30,16 +30,20 @@ class QrActivity : AppCompatActivity() {
 
         qrtext.setText("This is ${username}'s QR code.")
 
+        //qr 생성 : https://github.com/journeyapps/zxing-android-embedded
+        var url = "https://github.com/KangInyeong/Chan-ce"
+        val barcodeEncoder = BarcodeEncoder()
+        val bitmap: Bitmap = barcodeEncoder.encodeBitmap(url, BarcodeFormat.QR_CODE, 400, 400)
+        binding.qr.setImageBitmap(bitmap)
 
-
-        binding.btnCreate.setOnClickListener {
+/*        binding.btnCreate.setOnClickListener {
 
             //qr 생성 : https://github.com/journeyapps/zxing-android-embedded
             var url = "https://github.com/KangInyeong/Chan-ce"
             val barcodeEncoder = BarcodeEncoder()
             val bitmap: Bitmap = barcodeEncoder.encodeBitmap(url, BarcodeFormat.QR_CODE, 400, 400)
             binding.qr.setImageBitmap(bitmap)
-        }
+        }*/
 
         binding.btnMyPage.setOnClickListener {
             val intent = Intent(this, MypageActivity::class.java)
