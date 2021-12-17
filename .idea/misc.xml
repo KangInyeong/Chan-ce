@@ -17,6 +17,7 @@
         <entry key="..\:/Users/0903A/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/activity_store_detail.xml" value="0.2046875" />
         <entry key="..\:/Users/0903A/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/activity_subscription.xml" value="0.2046875" />
         <entry key="..\:/Users/0903A/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/item.xml" value="0.246875" />
+        <entry key="..\:/Users/0903A/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/past_item.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/drawable/button_selector.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/font/font.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/activity_account.xml" value="0.4" />
@@ -37,7 +38,6 @@
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/ad_banner2.xml" value="0.190625" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/ad_banner3.xml" value="0.190625" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/ad_banner4.xml" value="0.190625" />
-        <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/dialog.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/layout/item.xml" value="0.264" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/mipmap-anydpi-v26/chance_icon.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/hayoon/AndroidStudioProjects/Chan-ce/app/src/main/res/xml/network_security_config.xml" value="0.16458333333333333" />
@@ -46,9 +46,6 @@
         <entry key="..\:/Users/kiyoo/AndroidStudioProjects/Chance/app/src/main/res/layout/activity_mypage.xml" value="0.22" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/kang/chan_ce/DialogFrag.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

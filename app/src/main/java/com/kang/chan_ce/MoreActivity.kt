@@ -3,6 +3,7 @@ package com.kang.chan_ce
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
@@ -121,6 +122,17 @@ class MoreActivity : AppCompatActivity() {
                 }
 
             }
+        }
+
+        binding.btnDelete.setOnClickListener {
+            if (key != null) {
+                myRef.child(userid).child(key).removeValue().addOnSuccessListener {
+                    Toast.makeText( baseContext, "Deleted!", Toast.LENGTH_SHORT ).show()
+                    val intent = Intent(this, MypageActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
         }
 
         binding.btnMyPage.setOnClickListener {

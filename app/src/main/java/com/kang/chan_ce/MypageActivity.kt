@@ -234,11 +234,6 @@ class MypageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btnPast.setOnClickListener {
-            val intent = Intent(this, SeemoreActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.btnLogout.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, LoginActivity::class.java))
