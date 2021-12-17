@@ -53,6 +53,7 @@
         <activity android:name=".ReceiptActivity" android:label="결제 페이지"/>
         <activity android:name=".AccountActivity" android:label="입금 페이지"/>
         <activity android:name=".MypageActivity" android:label="마이 페이지"/>
+        <activity android:name=".ShakeActivity" android:label="센서"/>
 <!--        <meta-data android:name="com.kakao.sdk.AppKey" android:value=""/>-->
 
     </application>

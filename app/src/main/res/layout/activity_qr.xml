@@ -64,41 +64,16 @@
         android:background="@color/ground"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/qrtext"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="This is "
+            android:layout_height="40dp"
+            android:text=" "
             android:gravity="center"
             android:fontFamily="@font/bold"
             android:textColor="@color/black"
-            android:textSize="18dp" />
+            android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/qrtext"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Inyeong Kang"
-                android:gravity="center"
-                android:fontFamily="@font/bold"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="'s QR code."
-                android:gravity="center"
-                android:fontFamily="@font/bold"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-        </LinearLayout>
         <ImageView
             android:layout_width="300dp"
             android:layout_height="300dp"
