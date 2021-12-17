@@ -138,9 +138,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         var pickDay = mutableListOf<String>()// user의 픽업 요일
 
         var store = mutableListOf<String>()
-
         var size = 0
-        var storeName = ""
         val keyList = mutableListOf<String>()
         val userList = mutableListOf<Reserv>()
         userList.add(Reserv("none","none","none","none","none","none"))
@@ -177,11 +175,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                     val textView_result = textView_result //event 표시
                     textView_month.text = dateFormatForMonth.format(compactCalendarView.firstDayOfCurrentMonth)
                     compactCalendarView.setFirstDayOfWeek(Calendar.MONDAY)
-                    val button_add_events = button_add_events
+/*                    val button_add_events = button_add_events*/
 
 
                     //이게 예약정보가 있으면 예약정보의 날짜를 가져오도록.
-                    button_add_events.setOnClickListener(object : View.OnClickListener {
+/*                    button_add_events.setOnClickListener(object : View.OnClickListener {
                         override fun onClick(view: View?) {
 
                             for (j in 0 until subNum){
@@ -190,6 +188,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                                 var red = ((Math.random() * 255).toInt())
                                 var green = ((Math.random() * 255).toInt())
                                 var blue = ((Math.random() * 255).toInt())
+
+
 
                                 var startDate = subWeek[j].split(" ")[0]
                                 var startDay:Int = startDate.split("-")[2].toInt()// 구독 시작일
@@ -231,8 +231,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                                     }
                                     val time1 = trans_date1!!.time
                                     //가져와야 하는 값 #3 가게 이름
-
-                                    var ev1 = Event(Color.rgb(red,green,blue), time1, "$store")
+                                    var storeName = store[j]
+                                    var ev1 = Event(Color.rgb(red,green,blue), time1, "$storeName")
                                     compactCalendarView.addEvent(ev1)
                                     Log.e("가게", "$ev1")
                                 }
@@ -240,7 +240,68 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                             }
 
                         }
-                    })
+                    })*/
+
+
+
+                    for (j in 0 until subNum){
+
+                        //음식점마다 이벤트 색깔 다르게
+                        var red = ((Math.random() * 255).toInt())
+                        var green = ((Math.random() * 255).toInt())
+                        var blue = ((Math.random() * 255).toInt())
+
+
+
+                        var startDate = subWeek[j].split(" ")[0]
+                        var startDay:Int = startDate.split("-")[2].toInt()// 구독 시작일
+                        Log.e("시작", startDay.toString())
+
+                        val date = compactCalendarView.firstDayOfCurrentMonth
+                        val yyymm = dateFormatForMonth2.format(date)
+                        var date1 = ""
+                        var trans_date1: Date? = null
+                        var addNum = mutableListOf<Int>() // 요일 -> addNum번째일
+
+                        if (pickDay[j].contains("MON"))
+                            addNum.add(0)
+                        if (pickDay[j].contains("TUE"))
+                            addNum.add(1)
+                        if (pickDay[j].contains("WED"))
+                            addNum.add(2)
+                        if (pickDay[j].contains("THU"))
+                            addNum.add(3)
+                        if (pickDay[j].contains("FRI"))
+                            addNum.add(4)
+                        if (pickDay[j].contains("SAT"))
+                            addNum.add(5)
+                        if (pickDay[j].contains("SUN"))
+                            addNum.add(6)
+
+//                                Log.e("넘", "$pickDay, $addNum")
+
+                        for (i:Int in addNum){
+
+                            date1 = "$yyymm"+"-"+(startDay+i).toString() //"2021-11-01"
+                            Log.e("아","$date1")
+                            trans_date1 = null
+                            try {
+                                trans_date1 = dateFormatForDisplaying.parse(date1)
+                                Log.e("트라","$trans_date1")
+                            } catch (e: ParseException) {
+                                e.printStackTrace()
+                            }
+                            val time1 = trans_date1!!.time
+                            //가져와야 하는 값 #3 가게 이름
+                            var storeName = store[j]
+                            var ev1 = Event(Color.rgb(red,green,blue), time1, "$storeName")
+                            compactCalendarView.addEvent(ev1)
+                            Log.e("가게", "$ev1")
+                        }
+
+                    }
+
+
 
                     // 이벤트 관련 코드
                     compactCalendarView.setListener(object : CompactCalendarViewListener {
@@ -254,9 +315,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                                 event_name = events[0].data.toString()
                                 val time1 = events[0].timeInMillis
                                 event_date = transFormat.format(Date(time1))
-                            }
-                            //여기서 예약 정보 간단하게 보여주기
-                            textView_result.text = "클릭한 날짜 $date1 event 정보 $event_name"
+                                //여기서 예약 정보 간단하게 보여주기
+                                textView_result.text = "PICK UP DAY to $event_name"
+                            }else
+                                textView_result.text = "NO PICK UP DAY"
+
                         }
 
                         override fun onMonthScroll(firstDayOfNewMonth: Date?) {
