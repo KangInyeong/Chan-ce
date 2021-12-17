@@ -109,14 +109,14 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/regular"
                 android:gravity="center"
-                android:text="클릭한 날짜 정보" />
+                android:text=" " />
 
-            <Button
+<!--            <Button
                 android:id="@+id/button_add_events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="화면에 보이는 달의 1일, 2일에 이벤트 추가"
-                android:layout_marginBottom="60dp"/>
+                android:layout_marginBottom="60dp"/>-->
 
             <!--<ImageView
                 android:id="@+id/btnSubscribe"
