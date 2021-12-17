@@ -46,7 +46,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,7 +96,7 @@
                         android:id="@+id/txtweek"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nov 22nd ~ Nov 28th"
+                        android:text=" "
                         android:textColor="@color/black"
                         android:fontFamily="@font/medium"
                         android:textSize="18dp"
@@ -140,7 +141,7 @@
                         android:id="@+id/txtStore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Inyeong's Home"
+                        android:text=" "
                         android:textColor="@color/black"
                         android:fontFamily="@font/medium"
                         android:textSize="18dp"
@@ -184,7 +185,7 @@
                         android:id="@+id/txtDay"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="MON"
+                        android:text=" "
                         android:textColor="@color/black"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
@@ -235,7 +236,7 @@
                             android:id="@+id/txtmenu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="김치"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:fontFamily="@font/medium"
                             android:textSize="18dp"
@@ -246,7 +247,7 @@
                             android:id="@+id/numKimchi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="1"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:fontFamily="@font/medium"
                             android:textSize="18dp"
@@ -268,7 +269,7 @@
                             android:id="@+id/txtmenu1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="진미채"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:fontFamily="@font/medium"
                             android:textSize="18dp"
@@ -279,7 +280,7 @@
                             android:id="@+id/numJinMiChae"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="1"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:fontFamily="@font/medium"
                             android:textSize="18dp"
@@ -300,7 +301,7 @@
                             android:id="@+id/txtmenu2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="무말랭이"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:fontFamily="@font/medium"
                             android:textSize="18dp"
@@ -311,7 +312,7 @@
                             android:id="@+id/numMuMaLangE"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text=" "
                             android:textColor="@color/black"
                             android:fontFamily="@font/medium"
                             android:textSize="18dp"
@@ -347,5 +348,34 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnRevise"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/bold"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            android:text="Revise"/>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/bold"
+            android:textSize="15dp"
+            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:text="delete"/>
+
+    </LinearLayout>
 
 </LinearLayout>
